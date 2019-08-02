@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.movie.dao.MovieMapper" >
+
+    <insert id="add" parameterType="Movie">
+        insert into Movies
+        values (null,#{movieName},#{releaseDate},#{country} ,#{screenWriter} ,#{movieKind} ,#{director} ,#{grade} ,#{numOfPeople} ,#{price} ,#{actor} ,#{description} ,#{img})
+    </insert>
+
+    <select id="selectAll" resultType="Movie">
+        select *
+        from Movies;
+    </select>
+
+    <select id="selectByName" resultType="Movie">
+        select *
+        from Movies
+        where movieName like '%${movieName}%'
+        order by id desc
+        limit #{offset},#{limit}
+    </select>
+
+    <delete id="deleteById">
+        delete from Movies
+        where id = #{id}
+    </delete>
+
+    <update id="update">
+        update Movies
+        <set>
+            <if test="movieName != null and movieName!=''">
+                movieName=#{movieName},
+            </if>
+            <if test="releaseDate != null and releaseDate!=''">
+                releaseDate=#{releaseDate},
+            </if>
+            <if test="country != null and country!=''">
+                country=#{country},
+            </if>
+            <if test="screenWriter != null and screenWriter!=''">
+                screenWriter=#{screenWriter},
+            </if>
+            <if test="movieKind != null and movieKind!=''">
+                movieKind=#{movieKind},
+            </if>
+            <if test="director != null and director!=''">
+                director=#{director},
+            </if>
+            <if test="grade != null and grade!=''">
+                grade=#{grade},
+            </if>
+            <if test="numOfPeople != null and numOfPeople!=''">
+                numOfPeople=#{numOfPeople},
+            </if>
+            <if test="price != null and price!=''">
+                price=#{price},
+            </if>
+            <if test="actor != null and actor!=''">
+                actor=#{actor},
+            </if>
+            <if test="description != null and description!=''">
+                description=#{description},
+            </if>
+            <if test="img != null and img!=''">
+                img=#{img},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="count" resultType="int">
+        select count(*)
+        from Movies;
+    </select>
+</mapper>
