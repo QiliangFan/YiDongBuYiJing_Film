@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+     Created by sxj on 2019/8/02.
+-->
+<mapper namespace="com.movie.dao.UserPreferMapper">
+    <insert id="add" parameterType="UserPrefer">
+        INSERT into UserPrefers
+        (movieType,director,actor,userId)
+        VALUES(#{movieType},#{director},#{actor},#{userId});
+    </insert>
+    <select id="selectByUserId" parameterType="java.lang.Integer" resultType="UserPrefer">
+        SELECT *
+        from UserPrefers
+        where userId=#{userId};
+    </select>
+    <delete id="deleteByUserId" parameterType="java.lang.Integer">
+        delete from UserPrefers where userId=#{userId};
+    </delete>
+    <update id="update" parameterType="UserPrefer">
+        update UserPrefers
+        set movieType=#{movieType},director=#{director},actor=#{actor},userId=#{userId}
+        where id=#{id};
+    </update>
+    <select id="count" resultType="int">
+        SELECT count(*)
+        from UserPrefers;
+    </select>
+</mapper>

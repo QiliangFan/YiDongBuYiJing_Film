@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--        @author hehe-->
+<!--        @version 1.0-->
+<!--        @date 2019/8/2-->
+<mapper namespace="com.movie.dao.MessageMapper">
+    <insert id="add" parameterType="Message">
+        INSERT INTO Messages
+        VALUES (default ,#{content},#{userId})
+    </insert>
+    <select id="selectAll" resultType="Message">
+        SELECT * from Messages LIMIT #{offset},#{limit};
+    </select>
+    <select id="selectByUserId" resultType="Message">
+        select  * from Messages where userId=#{userId} limit #{offset},#{limit};
+    </select>
+    <update id="update" parameterType="Message">
+        UPDATE Messages
+        <set>
+            <if test="content != null and content != ''">
+                content = #{content},
+            </if>
+            <if test="userId != null">
+                userId = #{userId},
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete from Messages
+        where id = #{id}
+    </delete>
+    <select id="count" resultType="int">
+        select count(*) from Messages;
+    </select>
+</mapper>
