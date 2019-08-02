@@ -1,6 +1,6 @@
 package com.movie.domain.po;
 
-import java.sql.Blob;
+//import java.sql.Blob;
 
 /*
  * Created by sxj on 2019/8/02.
@@ -19,13 +19,7 @@ public class User {
     private String birthday;
     private String gender;
     private String authority;
-    private Blob image;
-
-
-
-
-
-
+    private byte[] image;
 
     @Override
     public String toString() {
@@ -43,7 +37,7 @@ public class User {
 
 
 
-    public User(String userName, String password, String email, String birthday, String gender, String authority, Blob image) {
+    public User(String userName, String password, String email, String birthday, String gender, String authority, byte[] image) {
         this.userName = userName;
         this.password = password;
         this.email = email;
@@ -53,7 +47,7 @@ public class User {
         this.image = image;
     }
 
-    public User(Integer id, String userName, String password, String email, String birthday, String gender, String authority, Blob image) {
+    public User(Integer id, String userName, String password, String email, String birthday, String gender, String authority, byte[] image) {
         this.id = id;
         this.userName = userName;
         this.password = password;
@@ -123,12 +117,12 @@ public class User {
         this.authority = authority;
     }
 
-    public Blob getImage() {
+    public byte[] getImage() {
         return image;
     }
 
 
-    public void setImage(Blob image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 }

@@ -35,7 +35,7 @@ public interface MessageMapper {
      * @param limit
      * @return
      */
-    List<Message> selectByUserId(@Param("userId") Integer userId,@Param("offset") Integer offset,@Param("limit") Integer limit);
+    List<Message> selectByUserId(@Param("userId") Integer userId, @Param("offset") Integer offset, @Param("limit") Integer limit);
 
     /**
      * 通过ID删除留言
