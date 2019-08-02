@@ -28,4 +28,11 @@
         SELECT count(*)
         from UserPrefers;
     </select>
+
+    <select id="selectAll" resultType="UserPrefer">
+        select *
+        from UserPrefers
+        order by id desc
+        limit #{offset} ,#{limit}
+    </select>
 </mapper>

@@ -74,4 +74,12 @@
         select count(*)
         from Movies;
     </select>
+
+    <select id="selectPrefer" parameterType="UserPrefer" resultType="Movie">
+        select *
+        from Movies
+        where Movies.movieKind like '${movieType}' or
+        Movies.director = #{director} or
+        Movies.actor like '${actor}'
+    </select>
 </mapper>
