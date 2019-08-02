@@ -1,10 +1,7 @@
 package com.movie.domain.po;
-
-/**
- * @author hehe
- * @version 1.0
- * @date 2019/8/1 23:43
- */
+/*
+ * Created by sxj on 2019/8/02.
+ * */
 public class UserPrefer {
     private Integer id;
     private String movieType;
