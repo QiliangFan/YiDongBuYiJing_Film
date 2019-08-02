@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="  
+            http://www.springframework.org/schema/beans       
+            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+            http://www.springframework.org/schema/context   
+            http://www.springframework.org/schema/context/spring-context-3.0.xsd  
+            http://www.springframework.org/schema/mvc  
+            http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+	<!-- 让 Spring MVC 使用 annotation 管理 Controller -->
+	<mvc:annotation-driven /> 		<!-- 让当前项目具有使用mvc 注解的能力 -->
+	<!-- 让当前项目识别所有的带有注解的控制器，并注册到当前项目中以备使用 -->
+	<context:component-scan
+		base-package="com.movie.web.controller" />
+	<context:component-scan
+			base-package="com.movie.biz" />
+	<!-- 声明文件上传解析器-->
+	<bean id="multipartResolver"
+		  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 设置文件上传最大大小限制 单位（字节）-->
+		<property name="maxUploadSize" value="1024000"></property>
+	</bean>
+
+	<!-- 逻辑视图名和物理视图的绑定 -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/" />	<!-- 指明物理视图的前缀 -->
+		<property name="suffix" value=".jsp" />			<!-- 指明物理视图的后缀 -->
+	</bean>
+</beans>  
