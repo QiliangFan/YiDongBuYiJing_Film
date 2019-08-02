@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+    <!--声明读入指定的读入属性配置文件 value是具体的值 ref是bean-->
+    <bean id="placeConfigurer"
+          class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+        <property name="location" value="classpath:dbconfig.properties"/>
+    </bean>
+
+    <!--声明、配置数据源 dataSource-->
+    <!--
+        BasicDataSource dataSource - new BasicDataSource();
+        dataSource.setDriverClassName(value的值)
+        ...
+    -->
+    <bean id="dataSource"
+          class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${driver}"/>
+        <property name="username" value="${usn}"/>
+        <property name="url" value="${url}"/>
+        <property name="password" value="${pwd}"/>
+        <property name="initialSize" value="${initialSize}"/>
+        <property name="maxActive" value="${maxActive}"/>
+        <property name="maxIdle" value="${maxIdle}"/>
+        <property name="minIdle" value="${minIdle}"/>
+        <property name="maxWait" value="${maxWait}"/>
+    </bean>
+
+    <!--生成SqlSessionFactory-->
+    <!--
+        SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+        sqlSessionFactoryBean.setDataSource(dataSource);
+        ...
+    -->
+    <bean id="sqlSessionFactoryBean"
+          class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--关联连接池-->
+        <property name="dataSource" ref="dataSource"/>
+        <!--加载sql映射文件-->
+<!--        <property name="configLocation" value="classpath:mybatis-config.xml"/>-->
+        <property name="typeAliasesPackage" value="com.movie.domain.po"/>
+        <property name="mapperLocations" value="classpath:mybatis/mapper/*.xml"/>
+    </bean>
+
+    <!--自动扫描对应的包，将相应的Mapper 接口导入实现Mybatis 接口绑定-->
+    <bean
+          class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--使用sqlSessionFactoryBeanName 可以借助注解注入Dao-->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryBean"/>
+        <property name="basePackage" value="com.movie.dao"/>
+    </bean>
+
+</beans>

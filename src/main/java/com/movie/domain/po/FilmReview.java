@@ -1,5 +1,7 @@
 package com.movie.domain.po;
-
+/*
+ * Created by sxj on 2019/8/02.
+ * */
 public class FilmReview {
     private Integer id;
     private Integer readNum;

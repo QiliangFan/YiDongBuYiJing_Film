@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.movie.dao.FilmReviewMapper">
+    <insert id="add" parameterType="FilmReview">
+        INSERT INTO filmreviews
+        (readNum,commentTime,review,goodNum,badNum,userId,movieId)
+        VALUES (#{readNum},#{commentTime},#{review},#{goodNum},#{badNum},#{userId},#{movieId})
+    </insert>
+    <select id="selectAll" resultType="FilmReview">
+        SELECT * from filmreviews LIMIT #{offset},#{limit};
+    </select>
+    <select id="selectByMovieId" resultType="FilmReview">
+        select  * from filmreviews where movieId=#{movieId} limit #{offset},#{limit};
+    </select>
+    <select id="selectByUserId" resultType="FilmReview">
+        select  * from filmreviews where userId=#{userId} limit #{offset},#{limit};
+    </select>
+    <update id="update" parameterType="FilmReview">
+        UPDATE filmreviews
+        set readNum=#{readNum},commentTime=#{commentTime},review=#{review},goodNum=#{goodNum},badNum=#{badNum},userId=#{userId},movieId=#{movieId}
+        where id=#{id}
+    </update>
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete from filmreviews
+        where id = #{id}
+    </delete>
+    <select id="count" resultType="int">
+        select count(*) from filmreviews;
+    </select>
+</mapper>
