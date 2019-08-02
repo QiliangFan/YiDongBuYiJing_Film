@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--        @author hehe-->
+<!--        @version 1.0-->
+<!--        @date 2019/8/2-->
+<mapper namespace="com.movie.dao.HistoryMapper">
+    <insert id="add" parameterType="History">
+        INSERT INTO Historys
+        VALUES (default ,#{event},#{time},#{userId},#{movieId})
+    </insert>
+    <select id="selectAll" resultType="History">
+        SELECT * from Historys LIMIT #{offset},#{limit};
+    </select>
+    <select id="selectByUserId" resultType="History">
+        select  * from Historys where userId=#{userId} limit #{offset},#{limit};
+    </select>
+    <select id="selectByMovieId" resultType="History">
+        select  * from Historys where movieId=#{movieId} limit #{offset},#{limit};
+    </select>
+    <update id="update" parameterType="History">
+        UPDATE Historys
+        <set>
+            <if test="event != null and event != ''">
+                event = #{event},
+            </if>
+            <if test="time != null and time != ''">
+                time = #{time},
+            </if>
+            <if test="userId != null">
+                userId = #{userId},
+            </if>
+            <if test="movieId != null">
+                movieId = #{movieId},
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete from Historys
+        where id = #{id}
+    </delete>
+    <select id="count" resultType="int">
+        select count(*) from Historys;
+    </select>
+</mapper>

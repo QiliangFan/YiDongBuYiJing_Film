@@ -1,5 +1,10 @@
 package com.movie.domain.po;
 
+/**
+ * @author hehe
+ * @version 1.0
+ * @date 2019/8/1 23:43
+ */
 public class UserPrefer {
     private Integer id;
     private String movieType;
