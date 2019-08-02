@@ -12,8 +12,8 @@ import java.util.List;
 public interface FilmReviewMapper {
     int add(FilmReview filmReview);
     List<FilmReview> selectAll(@Param("offset") Integer offset, @Param("limit") Integer limit);
-    List<FilmReview> selectByMovieId(@Param("offset") Integer offset, @Param("limit") Integer limit,@Param("movieId") Integer movieId);
-    List<FilmReview> selectByUserId(@Param("offset") Integer offset, @Param("limit") Integer limit,@Param("userId") Integer userId);
+    List<FilmReview> selectByMovieId(@Param("offset") Integer offset, @Param("limit") Integer limit, @Param("movieId") Integer movieId);
+    List<FilmReview> selectByUserId(@Param("offset") Integer offset, @Param("limit") Integer limit, @Param("userId") Integer userId);
     int update(FilmReview filmReview);
     int deleteById(Integer id);
     int count();
