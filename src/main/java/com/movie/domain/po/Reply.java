@@ -1,3 +1,4 @@
+//author:zyr
 package com.movie.domain.po;
 
 public class Reply {
@@ -6,7 +7,16 @@ public class Reply {
     private String content;
     private String replyTime;
     private Integer userId;
-    private Integer filmReviewId;
+    private FilmReview filmReview;
+
+    public FilmReview getFilmReview() {
+        return filmReview;
+    }
+
+    public void setFilmReview(FilmReview filmReview) {
+        this.filmReview = filmReview;
+    }
+
 
     public Integer getId() {
         return id;
@@ -48,43 +58,31 @@ public class Reply {
         this.userId = userId;
     }
 
-    public Integer getFilmReviewId() {
-        return filmReviewId;
-    }
-
-    public void setFilmReviewId(Integer filmReviewId) {
-        this.filmReviewId = filmReviewId;
-    }
 
     public Reply() {
     }
 
-    public Reply(Integer id, String title, String content, String replyTime, Integer userId, Integer filmReviewId) {
+    public Reply(Integer id, String title, String content, String replyTime, Integer userId, FilmReview filmReview) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.replyTime = replyTime;
         this.userId = userId;
-        this.filmReviewId = filmReviewId;
+        this.filmReview = filmReview;
     }
 
-    public Reply(String title, String content, String replyTime, Integer userId, Integer filmReviewId) {
+    public Reply(String title, String content, String replyTime, Integer userId, FilmReview filmReview) {
         this.title = title;
         this.content = content;
         this.replyTime = replyTime;
         this.userId = userId;
-        this.filmReviewId = filmReviewId;
+        this.filmReview = filmReview;
     }
 
-    @Override
-    public String toString() {
-        return "Reply{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                ", replyTime='" + replyTime + '\'' +
-                ", userId=" + userId +
-                ", filmReviewId=" + filmReviewId +
-                '}';
+    public Reply(String title, String content, String replyTime, Integer userId) {
+        this.title = title;
+        this.content = content;
+        this.replyTime = replyTime;
+        this.userId = userId;
     }
 }
