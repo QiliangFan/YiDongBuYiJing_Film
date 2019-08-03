@@ -4,15 +4,31 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper  namespace="com.movie.dao.ReplyMapper">
-<select id="selectByUserId"  resultType="Reply" >
-SELECT * FROM  Replies
-  where userId=#{userId}
- limit #{offset}, #{limit}
+    <resultMap id="GetReply" type="Reply">
+     <id column="id" property="id"/>
+       <result column="title" property="title"/>
+        <result column="content" property="content"/>
+        <result column="replyTime" property="replyTime"/>
+        <result column="userId"  property="userId"/>
+        <result column="id2" property="filmReview.id"/>
+        <result column="readNum" property="filmReview.readNum"/>
+        <result column="commentTime" property="filmReview.commentTime"/>
+        <result column="review" property="filmReview.review"/>
+        <result column="goodNum" property="filmReview.goodNum"/>
+        <result column="badNum" property="filmReview.badNum"/>
+        <result column="userId2" property="filmReview.userId"/>
+        <result column="movieId" property="filmReview.movieId"/>
+
+    </resultMap>
+<select id="selectByUserId"  resultMap="GetReply" >
+SELECT * ,FilmReviews.id as id2,FilmReviews.userId as userId2  FROM Replies
+inner join FilmReviews on filmReviewId=FilmReviews.id
+where Replies.userId=#{userId} limit #{offset},#{limit}
 </select>
-    <select id="selectByFilmReviewId" resultType="Reply">
-  select * from Replies
-  where filmReviewId=#{filmReviewId}
-  limit #{offset},#{limit}
+    <select id="selectByFilmReviewId" resultMap="GetReply">
+  SELECT * ,FilmReviews.id as id2,FilmReviews.userId as userId2  FROM Replies
+inner join FilmReviews on filmReviewId=FilmReviews.id
+where Replies.filmReviewId=#{filmReviewId} limit #{offset},#{limit}
     </select>
 
     <select id="countByUserId" resultType="int">
@@ -24,7 +40,7 @@ select count(*) from Replies where filmReviewId=#{filmReviewId}
     </select>
 
     <insert id="add"  parameterType="Reply" useGeneratedKeys="true" keyProperty="id">
-insert into Replies values(null,#{title},#{content},#{replyTime},#{userId},#{filmReviewId})
+insert into Replies values(null,#{title},#{content},#{replyTime},#{userId},#{filmReview.id})
 
     </insert>
     <delete id="deleteById" parameterType="int">
@@ -33,7 +49,7 @@ insert into Replies values(null,#{title},#{content},#{replyTime},#{userId},#{fil
 
     <update id="update"  parameterType="Reply">
 update Replies set title=#{title}, content=#{content},replyTime=#{replyTime} ,userId=#{userId} ,filmReviewId
-=#{filmReviewId}
+=#{filmReview.id}
 where id=#{id}
     </update>
 
