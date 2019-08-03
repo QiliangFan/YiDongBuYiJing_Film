@@ -32,4 +32,12 @@
     <select id="count" resultType="int">
         select count(*) from FilmReviews;
     </select>
+    <select id="countByUserId" resultType="java.lang.Integer">
+        select count(*) from FilmReviews
+        where userId=#{userId}
+    </select>
+    <select id="countByMovieId" resultType="java.lang.Integer">
+        select count(*) from FilmReviews
+        where movieId=#{movieId}
+    </select>
 </mapper>
