@@ -1,6 +1,7 @@
 package com.movie.dao;
 
 import com.movie.domain.po.Movie;
+import com.movie.domain.po.UserPrefer;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -52,4 +53,12 @@ public interface MovieMapper {
      * @return
      */
     Integer count();
+
+    /**
+     * 返回用户所喜爱的所有电影
+     * @param userPrefer
+     * @return
+     */
+    List<Movie> selectPrefer(UserPrefer userPrefer);
+
 }

@@ -1,15 +1,4 @@
 package com.movie.domain.po;
-/*
- * Created by sxj on 2019/8/02.
- * */
-
-
-/**
- * @author chentaijie
- * @version 1.0
- * @date 2019/8/1 21:51
- */
-
 public class Movie {
     private Integer id;
     private String movieName;
@@ -18,26 +7,30 @@ public class Movie {
     private String screenWriter;
     private String movieKind;
     private String director;
+    private double grade;
+    private Integer numOfPeople;
+    private Integer price;
+    private String actor;
+    private String description;
+    private String img;
 
-    @Override
-    public String toString() {
-        return "Movie{" +
-                "id=" + id +
-                ", movieName='" + movieName + '\'' +
-                ", releaseDate='" + releaseDate + '\'' +
-                ", country='" + country + '\'' +
-                ", screenWriter='" + screenWriter + '\'' +
-                ", movieKind='" + movieKind + '\'' +
-                ", director='" + director + '\'' +
-                ", grade=" + grade +
-                ", numOfPeople=" + numOfPeople +
-                ", price=" + price +
-                ", actor='" + actor + '\'' +
-                ", description='" + description + '\'' +
-                ", img='" + img + '\'' +
-                '}';
+    public Movie() {
     }
 
+    public Movie(String movieName, String releaseDate, String country, String screenWriter, String movieKind, String director, double grade, Integer numOfPeople, Integer price, String actor, String description, String img) {
+        this.movieName = movieName;
+        this.releaseDate = releaseDate;
+        this.country = country;
+        this.screenWriter = screenWriter;
+        this.movieKind = movieKind;
+        this.director = director;
+        this.grade = grade;
+        this.numOfPeople = numOfPeople;
+        this.price = price;
+        this.actor = actor;
+        this.description = description;
+        this.img = img;
+    }
 
     public Movie(Integer id, String movieName, String releaseDate, String country, String screenWriter, String movieKind, String director, double grade, Integer numOfPeople, Integer price, String actor, String description, String img) {
         this.id = id;
@@ -55,28 +48,9 @@ public class Movie {
         this.img = img;
     }
 
-    private double grade;
-    private Integer numOfPeople;
-    private Integer price;
-
-    public Movie(String movieName, String releaseDate, String country, String screenWriter, String movieKind, String director, double grade, Integer numOfPeople, Integer price, String actor, String description, String img) {
-        this.movieName = movieName;
-        this.releaseDate = releaseDate;
-        this.country = country;
-        this.screenWriter = screenWriter;
-        this.movieKind = movieKind;
-        this.director = director;
-        this.grade = grade;
-        this.numOfPeople = numOfPeople;
-        this.price = price;
-        this.actor = actor;
-        this.description = description;
-        this.img = img;
-    }
 
     public Movie() {
     }
-
 
 
     public Integer getId() {
@@ -183,9 +157,22 @@ public class Movie {
         this.img = img;
     }
 
-    private String actor;
-    private String description;
-    private String img;
-    
-
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", movieName='" + movieName + '\'' +
+                ", releaseDate='" + releaseDate + '\'' +
+                ", country='" + country + '\'' +
+                ", screenWriter='" + screenWriter + '\'' +
+                ", movieKind='" + movieKind + '\'' +
+                ", director='" + director + '\'' +
+                ", grade=" + grade +
+                ", numOfPeople=" + numOfPeople +
+                ", price=" + price +
+                ", actor='" + actor + '\'' +
+                ", description='" + description + '\'' +
+                ", img='" + img + '\'' +
+                '}';
+    }
 }

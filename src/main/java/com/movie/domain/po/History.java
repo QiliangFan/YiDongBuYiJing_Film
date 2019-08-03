@@ -1,7 +1,4 @@
 package com.movie.domain.po;
-/*
- * Created by sxj on 2019/8/02.
- * */
 public class History {
     private Integer id;
     private String event;
