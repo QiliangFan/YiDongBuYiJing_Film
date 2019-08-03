@@ -48,11 +48,6 @@ public class Movie {
         this.img = img;
     }
 
-
-    public Movie() {
-    }
-
-
     public Integer getId() {
         return id;
     }

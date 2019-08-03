@@ -4,10 +4,9 @@ import com.movie.biz.UserService;
 import com.movie.domain.po.User;
 import com.movie.dao.*;
 
-import jdk.internal.util.xml.impl.Input;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -21,7 +20,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
-@Component
+@Service
 public class UserServiceImpl  implements UserService {
     public static String verifyCode=null;
 
