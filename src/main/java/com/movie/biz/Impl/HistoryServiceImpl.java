@@ -30,4 +30,9 @@ public class HistoryServiceImpl implements HistoryService {
         List<History> histories=historyMapper.selectAll(offset, limit);
         return histories;
     }
+
+    @Override
+    public List<History> selectByUserId2(Integer userId) {
+        return null;
+    }
 }

@@ -19,7 +19,7 @@ public class User {
     private String birthday;
     private String gender;
     private String authority;
-    private byte[] image;
+    private String image;
 
     @Override
     public String toString() {
@@ -37,7 +37,7 @@ public class User {
 
 
 
-    public User(String userName, String password, String email, String birthday, String gender, String authority, byte[] image) {
+    public User(String userName, String password, String email, String birthday, String gender, String authority, String image) {
         this.userName = userName;
         this.password = password;
         this.email = email;
@@ -47,7 +47,7 @@ public class User {
         this.image = image;
     }
 
-    public User(Integer id, String userName, String password, String email, String birthday, String gender, String authority, byte[] image) {
+    public User(Integer id, String userName, String password, String email, String birthday, String gender, String authority, String image) {
         this.id = id;
         this.userName = userName;
         this.password = password;
@@ -117,12 +117,12 @@ public class User {
         this.authority = authority;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 }

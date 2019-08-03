@@ -11,4 +11,6 @@ public interface HistoryService {
     boolean deleteById(Integer id);
 
     List<History> showAll(int offset,int limit);
+
+    List<History> selectByUserId2(Integer userId);
 }

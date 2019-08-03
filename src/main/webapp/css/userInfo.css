@@ -1,0 +1,156 @@
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    margin:0;
+    padding:0;
+}
+
+.userInfo{
+    background-color: #fff9e9;
+}
+
+.leftBar{
+    height: 100%;
+    background-color: #e6bbbf;
+    border-top-right-radius: 26px;
+    border-bottom-right-radius: 26px;
+    box-shadow: #6c757d 0 0 5px;
+    width:40%;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+}
+
+.leftBar:hover{
+    width: 100%;
+
+}
+
+.leftBar a{
+    width: 100%;
+    text-decoration: none;
+    margin:auto;
+    margin-top: 4vh;
+    display: inline-block;
+    text-align: center;
+}
+
+.leftBar a img{
+    width: 50%;
+    display: inline-block;
+    margin:auto;
+}
+
+span.choose{
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 2vh;
+    color:black;
+    text-shadow: #6c757d 0 0 5px;
+}
+
+.col-md-11>.row{
+    height: 100%;
+}
+
+.headImgContainer{
+    width: 100%;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.headImgContainer img{
+    width: 50%;
+    height: 40%;
+    display: block;
+    magtin:auto;
+    background-color: #d7b7e2;
+    border-radius: 26px;
+    box-shadow: #6c757d 0 0 10px;
+}
+
+#modifyUserInfo{
+    width: 50%;
+    text-align: center;
+}
+
+.modifyItem{
+    display: inline-block;
+    width: 100%;
+    text-align: justify-all;
+    margin-top: 2vh;
+    font-size: 2vh;
+    text-shadow: #6c757d 0 0 -3px;
+    border-radius: 26px;
+}
+
+input:focus:not([type="submit"]){
+    box-shadow: #6c757d 0 0 5px;
+    background-color: rgba(11, 0, 59, 0.15);
+}
+
+input[type="password"]{
+    width: 40%;
+}
+
+.modifyItem:nth-child(1){
+    margin-top: 10vh;
+}
+
+table.mytable td{
+    text-align: center !important;
+    text-shadow: #6c757d 0 0 3px;
+}
+
+table.mytable th{
+    text-align: center !important;
+    text-shadow: #6c757d 0 0 3px;
+}
+
+table.mytable{
+    margin-top: 10vh;
+}
+
+form.myForm{
+    width: 100%;
+    text-align: center;
+    margin-top: 10vh;
+}
+
+form.myForm span{
+    display: inline-block;
+    margin-bottom: 5vh;
+}
+
+button.mybutton{
+    border-radius: 26px;
+    box-shadow: #6c757d 0 0 5px;
+    background-color: #ffb6ac;
+    font-weight: bolder;
+    text-shadow: #7abaff 0 0 3px;
+    width: 5vw;
+    height: 5vh;
+    margin: 1vw;
+}
+
+button.mybutton:hover{
+    background-color: #7abaff;
+}
+
+button.mybutton:active{
+    background-color: #c98078;
+}
+.active{
+    background-color: #c98078 !important;
+}
