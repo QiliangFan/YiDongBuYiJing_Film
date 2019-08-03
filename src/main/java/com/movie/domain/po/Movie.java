@@ -1,15 +1,4 @@
 package com.movie.domain.po;
-/*
- * Created by sxj on 2019/8/02.
- * */
-=======
-
-/**
- * @author chentaijie
- * @version 1.0
- * @date 2019/8/1 21:51
- */
-6
 public class Movie {
     private Integer id;
     private String movieName;
@@ -38,7 +27,6 @@ public class Movie {
                 '}';
     }
 
-6
     public Movie(Integer id, String movieName, String releaseDate, String country, String screenWriter, String movieKind, String director, double grade, Integer numOfPeople, Integer price, String actor, String description, String img) {
         this.id = id;
         this.movieName = movieName;
@@ -77,8 +65,6 @@ public class Movie {
     public Movie() {
     }
 
-
-6
     public Integer getId() {
         return id;
     }

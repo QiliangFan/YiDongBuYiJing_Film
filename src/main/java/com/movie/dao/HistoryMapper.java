@@ -26,14 +26,14 @@ public interface HistoryMapper {
      * @param limit
      * @return
      */
-    List<History> selectAll(@Param("offset") Integer offset,@Param("limit") Integer limit);
+    List<History> selectAll(@Param("offset") Integer offset, @Param("limit") Integer limit);
 
     /**
      * 通过用户ID获取历史
      * @param userId
      * @return
      */
-    List<History> selectByUserId(@Param("userId") Integer userId,@Param("offset") Integer offset,@Param("limit") Integer limit);
+    List<History> selectByUserId(@Param("userId") Integer userId, @Param("offset") Integer offset, @Param("limit") Integer limit);
 
     /**
      * 通过电影ID获取历史
@@ -42,7 +42,7 @@ public interface HistoryMapper {
      * @param limit
      * @return
      */
-    List<History> selectByMovieId(@Param("movieId") Integer movieId,@Param("offset") Integer offset,@Param("limit") Integer limit);
+    List<History> selectByMovieId(@Param("movieId") Integer movieId, @Param("offset") Integer offset, @Param("limit") Integer limit);
 
     /**
      * 通过id删除历史

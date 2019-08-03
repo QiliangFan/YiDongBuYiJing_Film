@@ -12,7 +12,7 @@
         VALUES (#{readNum},#{commentTime},#{review},#{goodNum},#{badNum},#{userId},#{movieId})
     </insert>
     <select id="selectAll" resultType="FilmReview">
-        SELECT * from Filmreviews LIMIT #{offset},#{limit};
+        SELECT * from FilmReviews LIMIT #{offset},#{limit};
     </select>
     <select id="selectByMovieId" resultType="FilmReview">
         select  * from FilmReviews where movieId=#{movieId} limit #{offset},#{limit};
@@ -31,5 +31,13 @@
     </delete>
     <select id="count" resultType="int">
         select count(*) from FilmReviews;
+    </select>
+    <select id="countByUserId" resultType="java.lang.Integer">
+        select count(*) from FilmReviews
+        where userId=#{userId}
+    </select>
+    <select id="countByMovieId" resultType="java.lang.Integer">
+        select count(*) from FilmReviews
+        where movieId=#{movieId}
     </select>
 </mapper>
