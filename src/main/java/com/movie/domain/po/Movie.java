@@ -14,8 +14,7 @@ public class Movie {
     private String description;
     private String img;
 
-    public Movie() {
-    }
+
 
     public Movie(String movieName, String releaseDate, String country, String screenWriter, String movieKind, String director, double grade, Integer numOfPeople, Integer price, String actor, String description, String img) {
         this.movieName = movieName;

@@ -2,7 +2,8 @@ package com.movie.biz;
 
 import com.movie.domain.po.Movie;
 import com.movie.utils.Page;
-import com.movie.utils.SelectType;
+import com.movie.utils.Select;
+
 /**
  * @author hehe
  * @version 1.0
@@ -11,13 +12,14 @@ import com.movie.utils.SelectType;
 public interface MovieService {
     /**
      * 查询
-     * @param type
+     * @param selectType
+     * @param sortType
      * @param value
      * @param currentPage
      * @param pageSize
      * @return
      */
-    Page<Movie> select(SelectType type,Object value, Integer currentPage, Integer pageSize);
+    Page<Movie> select(Select.SelectType selectType, Object value, Select.SortType sortType, Select.OrderBy orderBy, Integer currentPage, Integer pageSize);
 
     /**
      * 增加电影
