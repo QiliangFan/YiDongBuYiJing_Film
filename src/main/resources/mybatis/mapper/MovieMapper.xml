@@ -82,4 +82,19 @@
         Movies.director = #{director} or
         Movies.actor like '${actor}'
     </select>
+    <select id="selectAllSortByScore" resultType="Movie">
+        select *
+        from Movies
+        ORDER BY grade/numOfPeople DESC;
+    </select>
+    <select id="selectAllSortByNumOfPeople" resultType="Movie">
+        select *
+        from Movies
+        ORDER BY numOfPeople DESC;
+    </select>
+    <select id="selectMovieById" resultType="Movie" parameterType="java.lang.Integer">
+        select *
+        from Movies
+        where id = #{id}
+    </select>
 </mapper>

@@ -29,14 +29,14 @@ public interface MovieMapper {
 
     /**
      *根据电影名称查询
-     * @param moviename
+     * @param movieName
      * @return
      */
     List<Movie> selectByName(@Param("movieName") String movieName, @Param("offset") Integer offset, @Param("limit") Integer limit);
 
     /**
      * 根据电影ID删除电影
-     * @param movie
+     * @param id
      * @return
      */
     Integer deleteById(Integer id);
@@ -60,5 +60,9 @@ public interface MovieMapper {
      * @return
      */
     List<Movie> selectPrefer(UserPrefer userPrefer);
+
+    List<Movie> selectAllSortByScore();
+    List<Movie> selectAllSortByNumOfPeople();
+    Movie selectMovieById(Integer id);
 
 }

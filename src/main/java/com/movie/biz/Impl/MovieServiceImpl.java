@@ -149,4 +149,22 @@ public class MovieServiceImpl implements MovieService {
     public Boolean delete(Integer id) {
         return movieMapper.deleteById(id) == 1;
     }
+
+    @Override
+    public List<Movie> findMovieByScore() {
+        List<Movie>list = movieMapper.selectAllSortByScore();
+        return list;
+    }
+
+    @Override
+    public List<Movie> findMovieByNumOfPeople() {
+        List<Movie> list =movieMapper.selectAllSortByNumOfPeople();
+        return list;
+    }
+
+    @Override
+    public Movie findMovieById(Integer id) {
+        Movie movie = movieMapper.selectMovieById(id);
+        return movie;
+    }
 }

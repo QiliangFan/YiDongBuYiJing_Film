@@ -13,7 +13,7 @@ import java.util.List;
 public interface UserPreferMapper {
     int add(UserPrefer userPrefer);
     UserPrefer selectByUserId(Integer userId);
-    List<UserPrefer> selectAll(@Param("offset") Integer offset,@Param("limit")Integer limit);
+    List<UserPrefer> selectAll(@Param("offset") Integer offset, @Param("limit") Integer limit);
     int deleteByUserId(Integer userId);
     int update(UserPrefer userPrefer);
     int count();
