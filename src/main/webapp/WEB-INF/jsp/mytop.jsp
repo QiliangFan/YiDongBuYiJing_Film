@@ -132,7 +132,7 @@
                             <li><a href="">A - z list</a></li>
                             <li><a href="main.jsp#contactForm" target="_top">Contact</a></li>
                             <li id="showname" style="display: inline-block;"><a href="admin.jsp">Login and Register</a></li>
-                            <li id="showname2" style="display: none;"><a href="#">Hello! ${sessionScope.email}</a></li>
+                            <li id="showname2" style="display: none;"><a href="userinfo.jsp">Hello! ${sessionScope.email}</a></li>
                             <li id="showname3" style="display: none;"><a href="LogoutServlet">log out !</a></li>
                         </ul>
 
@@ -158,6 +158,8 @@
         <!--//header-w3l-->
     </div>
 </div>
+<!-- Dropdown-Menu-JavaScript -->
+<script src="javascript/jquery-1.11.1.min.js"></script>
 <!-- Dropdown-Menu-JavaScript -->
 <script>
     $(document).ready(function(){

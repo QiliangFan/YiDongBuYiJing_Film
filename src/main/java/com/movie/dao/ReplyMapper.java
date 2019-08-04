@@ -22,6 +22,7 @@ public interface ReplyMapper {
         public int update(Reply reply);
         public int countByUserId(Integer userId);
         public int countByFilmReviewId(Integer filmReviewId);
+        public List<Reply> selectAll();
 
 
 }

@@ -9,13 +9,15 @@
     <base href="<%=basePath%>">
     <title>个人信息界面</title>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="js/md5.js"></script>
+    <script src="js/richtext.js"></script>
     <script type="text/javascript" src="js/userInfo.js"></script>
     <link rel="stylesheet" type="text/css" href="/Movies/bootstrap-4.3.1-dist/css/bootstrap.min.css"></link>
     <link rel="stylesheet" type="text/css" href="css/userInfo.css">
 </head>
-<body class="container-fluid" style="padding: 0;margin:0;">
-<div class="row" style="height: 30%;" style="padding: 0;margin:0;"></div>
-<div class="row userInfo" style="height: 70%" style="padding: 0;margin:0;">
+<body class="container-fluid" style="padding: 0;">
+<div class="row" style="height: 30%;padding: 0;margin:0;"></div>
+<div class="row userInfo" style="width:100%;height: 70%;padding: 0;margin:0;">
     <div class="col-md-1" style="padding: 0;margin:0;">
         <div class="leftBar">
             <div class="row">
@@ -45,24 +47,23 @@
                 <img id="headImage" onerror="errorImg(this)" src="img/liangUser.png" title="用户头像">
             </div>
             <div class="col-md-9" style="padding: 0;margin:0;text-align: center;">
-                <form action="modifyUserInfo" id="modifyUserInfo" method="post" enctype="multipart/form-data">
+                <form action="modifyUserInfo" onsubmit="return submitForm()" id="modifyUserInfo" method="post" enctype="multipart/form-data">
                     <input type="hidden" id="hideId" name="id">
                     <input type="hidden" id="hideUserName" name="userName">
                     <input type="hidden" id="hideEmail" name="email">
                     <input type="hidden" id="hideAuthority" name="authority">
-                    <input type="hidden" id="hidePassword" name="password">
-
+                    <input type="hidden" name="password" id="password">
+                    <input type="hidden" name="confirmpassword" id="confirmpassword">
 
                     <span class="modifyItem" id="username">用户名:</span><br>
                     <span class="modifyItem" id="email">邮箱:</span><br>
-                    <span class="modifyItem">性别:<input type="radio" name="gender" value="男">男&nbsp;<input type="radio"
-                                                                                                          value="女"
-                                                                                                          name="gender">女<br></span>
+                    <span class="modifyItem">性别:<input style="width: 2vw;" type="radio" name="gender" value="男">男&nbsp;<input style="width: 2vw;" type="radio"
+                                                                                                          value="女" name="gender">女<br></span>
                     <span class="modifyItem">生日:<input type="date" name="birthday"></span><br>
-                    <span class="modifyItem">密码:<input type="password" name="password"> </span><br>
-                    <span class="modifyItem">确认密码:<input type="password" name="confirmpassword"></span><br>
-                    <span class="modifyItem">上传头像:<input type="file" name="headimage"></span><br>
-                    <span class="modifyItem" style="text-align: center"><input type="submit" value="确认修改"></span>
+                    <span class="modifyItem">密码:<input id="fpassword" type="password" name="fpassword"> </span><br>
+                    <span class="modifyItem">确认密码:<input id="fconfirmpassword"  type="fpassword" name="confirmpassword"></span><br>
+                    <span class="modifyItem" >上传头像:<input style="width: 4vw; text-decoration: none;box-shadow: #ffffff 0 0 0;border: 0;" class="upload" type="file" name="headimage"></span><br>
+                    <span class="modifyItem"  style="text-align: center;"><input style="width: 6vw;" type="submit" value="确认修改"></span>
                 </form>
             </div>
         </div>
@@ -71,8 +72,8 @@
         <div id="myHoby" class="row myHoby" style="padding: 0;margin:0;">
             <div class="row" style="width:100%;margin: 0;padding: 0;">
                 <form class="myForm" onsubmit="return false;">
-                    <span>喜欢的导演:<input name="director"></span><br>
-                    <span>喜欢的演员:<input name="actor"></span><br>
+                    <span>喜欢的导演:&nbsp;&nbsp;<input id="director" name="director" placeholder="多个导演之间以空格分割"></span><br>
+                    <span>喜欢的演员:&nbsp;&nbsp;<input id="actor" name="actor" placeholder="多个演员之间以空格分割"></span><br>
 <%--                    <span>喜欢的电影类型<select>--%>
 <%--                        <option value="剧情">剧情</option>--%>
 <%--                        <option value="喜剧">喜剧</option>--%>
@@ -165,6 +166,14 @@
 
             </div>
         </div>
+        <div id="t1"  style="margin:0;width:10vw;height:4vh;background-color: #ff787b;position:absolute;z-index: -1;">看什么看！</div>
+        <div id="t2" style="margin:0;width:10vw;height:4vh;background-color: #119aff;position:absolute;z-index: -1;"></div>
+        <div id="t3" style="margin:0;width:10vw;height:4vh;background-color: #4c13ff;position:absolute;z-index: -1;"></div>
+        <div id="t4" style="margin:0;width:10vw;height:4vh;background-color: #ff0ccf;position:absolute;z-index: -1;"></div>
+        <div id="t5" style="margin:0;width:10vw;height:4vh;background-color: #16ffc4;position:absolute;z-index: -1;"></div>
+        <div id="t6" style="margin:0;width:10vw;height:4vh;background-color: #3dff18;position:absolute;z-index: -1;"></div>
+        <div id="t7" style="margin:0;width:10vw;height:4vh;background-color: #fff415;position:absolute;z-index: -1;"></div>
+        <div id="run" style="margin:0;width:25vw;height:25vh;background:url('./img/run.gif') no-repeat;background-size:cover;position: absolute;z-index: -1;"></div>
     </div>
 </div>
 </body>

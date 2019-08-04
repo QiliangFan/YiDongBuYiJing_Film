@@ -20,6 +20,12 @@
         <result column="movieId" property="filmReview.movieId"/>
 
     </resultMap>
+    <!--  2019/8/4 增加  -->
+    <select id="selectAll"  resultMap="GetReply" >
+SELECT * ,FilmReviews.id as id2,FilmReviews.userId as userId2  FROM Replies
+inner join FilmReviews on filmReviewId=FilmReviews.id
+</select>
+
 <select id="selectByUserId"  resultMap="GetReply" >
 SELECT * ,FilmReviews.id as id2,FilmReviews.userId as userId2  FROM Replies
 inner join FilmReviews on filmReviewId=FilmReviews.id
@@ -52,6 +58,5 @@ update Replies set title=#{title}, content=#{content},replyTime=#{replyTime} ,us
 =#{filmReview.id}
 where id=#{id}
     </update>
-
 
 </mapper>

@@ -61,4 +61,5 @@ public interface UserMapper {
      * @return
      */
     Integer count();
+    User selectById(Integer id);
 }

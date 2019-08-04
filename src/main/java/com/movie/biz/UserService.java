@@ -3,6 +3,8 @@ package com.movie.biz;
 import com.movie.domain.po.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 
 public interface UserService {
     /*返回true,登陆成功
@@ -34,4 +36,7 @@ public interface UserService {
      */
     boolean verifyCode(String code);
 
+    User findUserById(Integer id);
+    List<User> findAll();
+    boolean delete(Integer userId);
 }

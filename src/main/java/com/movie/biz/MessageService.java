@@ -22,7 +22,7 @@ public interface MessageService {
      * 获取全部留言
      * @return
      */
-    List<Message> selectAllMessage(Integer currentPage,Integer limit);
+    List<Message> selectAllMessage(Integer currentPage, Integer limit);
 
     /**
      * 通过用户ID删除留言
@@ -45,5 +45,5 @@ public interface MessageService {
      * @param limit
      * @return
      */
-    List<Message> getOwnMessage(Integer userId,Integer currentPage,Integer limit);
+    List<Message> getOwnMessage(Integer userId, Integer currentPage, Integer limit);
 }

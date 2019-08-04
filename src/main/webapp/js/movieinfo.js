@@ -32,7 +32,7 @@ window.onload=function(){
         document.getElementById("scoreinput").value="";
     }else if(/s=success/.test(query)){
         alert("短评发表成功！");
-        document.getElementById("writemyfilmreivew").value=""
+        document.getElementById("review").value=""
     }else if(/s=fail/.test(query)){
         alert("每人每天只能评论一次哦");
     }
@@ -42,12 +42,27 @@ window.onload=function(){
 
 
 function checkfilmreview(){
-    var email=document.getElementById("forgetemail").value;
-    if(typeof(email)==undefined||email==null||email==""){
+    var id=document.getElementById("forgetemail").value;
+    if(typeof(id)==undefined||id==null||id==""){
         alert("请先登陆！");
         return false;
     }
-    var text=document.getElementById("writemyfilmreivew").value;
+    var text=document.getElementById("review").value;
+    console.log(text);
+    if(typeof(text)==undefined||text==null||text==""){
+        alert("客官请先说点什么嘛～")
+        return false;
+    }
+    return true;
+}
+
+function checkreply(){
+    var id=document.getElementById("forgetemail").value;
+    if(typeof(id)==undefined||id==null||id==""){
+        alert("请先登陆！");
+        return false;
+    }
+    var text=document.getElementById("content").value;
     console.log(text);
     if(typeof(text)==undefined||text==null||text==""){
         alert("客官请先说点什么嘛～")

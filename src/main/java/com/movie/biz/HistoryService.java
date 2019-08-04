@@ -6,11 +6,14 @@ import java.util.List;
 
 public interface HistoryService {
 
-    List<History> selectByUserId(Integer id,int offset,int limit);
+    List<History> selectByUserId(Integer id, int offset, int limit);
 
     boolean deleteById(Integer id);
 
-    List<History> showAll(int offset,int limit);
+    List<History> showAll(int offset, int limit);
+
+
 
     List<History> selectByUserId2(Integer userId);
+
 }

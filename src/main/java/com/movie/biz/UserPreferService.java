@@ -23,7 +23,7 @@ public interface UserPreferService {
      * 查看所有用户偏好
      * @return
      */
-    List<UserPrefer> getAllPrefer(Integer currentPage,Integer limit);
+    List<UserPrefer> getAllPrefer(Integer currentPage, Integer limit);
 
     /**
      * 删除个人喜好
