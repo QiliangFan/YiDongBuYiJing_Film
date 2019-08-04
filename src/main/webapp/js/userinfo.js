@@ -288,9 +288,16 @@ function submit(){
     var pwd1 = $("#fpassword").val();
     var pwd2 = $("#fconfirmpassword").val();
     if(!pwd1&&!pwd2&&pwd1!=""&&pwd2!=""){
-
+        if(pwd1!=pwd2){
+            alert("两次密码不一致!");
+            return false;
+        }else{
+            alert("修改成功")
+            return true;
+        }
     }else{
-        alert("密码不能为空")
+        alert("密码不能为空");
+        return false;
     }
 }
 
