@@ -83,38 +83,62 @@ public class MovieServiceImpl implements MovieService {
                         break;
                     }
                     case Keyword: {
-                        if (m.getMovieName().contains((String) value)) {
-                            temp.add(m);
+                        String[] values = ((String) value).split(" ");
+                        for (String v:
+                                values) {
+                            if (m.getMovieName().contains(v)) {
+                                temp.add(m);
+                            }
                         }
                         break;
                     }
                     case Country: {
-                        if (m.getCountry().contains((String) value)) {
-                            temp.add(m);
+                        String[] values = ((String) value).split(" ");
+                        for (String v:
+                                values) {
+                            if (m.getCountry().contains(v)) {
+                                temp.add(m);
+                            }
                         }
                         break;
                     }
                     case MovieKind: {
-                        if (m.getMovieKind().contains((String) value)) {
-                            temp.add(m);
+                        String[] values = ((String) value).split(" ");
+                        for (String v:
+                                values) {
+                            if (m.getMovieKind().contains(v)) {
+                                temp.add(m);
+                            }
                         }
                         break;
                     }
                     case Actor:{
-                        if (m.getActor().contains((String) value)) {
-                            temp.add(m);
+                        String[] values = ((String) value).split(" ");
+                        for (String v:
+                                values) {
+                            if (m.getActor().contains(v) ){
+                                temp.add(m);
+                            }
                         }
                         break;
                     }
                     case Director:{
-                        if (m.getDirector().contains((String) value)) {
-                            temp.add(m);
+                        String[] values = ((String) value).split(" ");
+                        for (String v:
+                                values) {
+                            if (m.getDirector().contains(v)) {
+                                temp.add(m);
+                            }
                         }
                         break;
                     }
                     case ScreenWriter:{
-                        if (m.getScreenWriter().contains((String) value)) {
-                            temp.add(m);
+                        String[] values = ((String) value).split(" ");
+                        for (String v:
+                                values) {
+                            if (m.getScreenWriter().contains(v)) {
+                                temp.add(m);
+                            }
                         }
                         break;
                     }
