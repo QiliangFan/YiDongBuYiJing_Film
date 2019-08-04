@@ -44,4 +44,20 @@
     <select id="count" resultType="int">
         select count(*) from Historys;
     </select>
+    
+    <resultMap id="myHistory" type="History">
+        <id column="id" property="id"></id>
+        <result column="event" property="event"></result>
+        <result column="time" property="time"></result>
+        <result column="userId" property="userId"></result>
+        <result column="movieId" property="movieId"></result>
+        <association property="movie">
+            <result column="movieName" property="movieName"></result>
+        </association>
+    </resultMap>
+    <select id="selectByUserId2" resultMap="myHistory">
+        select * from
+        Historys left join Movies on movieId = Movies.id
+        where userId = #{userId}
+    </select>
 </mapper>

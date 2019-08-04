@@ -37,10 +37,18 @@
 		<property name="maxUploadSize" value="1024000"></property>
 	</bean>
 
+	<mvc:resources mapping="/filesUplaod/**" location="/filesUpload/"></mvc:resources>
+	<mvc:resources mapping="/css/**" location="/css/"></mvc:resources>
+	<mvc:resources mapping="/img/**" location="/img/"></mvc:resources>
+	<mvc:resources mapping="/js/**" location="/js/"></mvc:resources>
+	<mvc:resources mapping="/bootstrap-4.3.1-dist/**" location="/bootstrap-4.3.1-dist/"></mvc:resources>
+	<mvc:default-servlet-handler></mvc:default-servlet-handler>
+
 	<!-- 逻辑视图名和物理视图的绑定 -->
 	<bean id="viewResolver"
 		  class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsp/" />	<!-- 指明物理视图的前缀 -->
 		<property name="suffix" value=".jsp" />			<!-- 指明物理视图的后缀 -->
 	</bean>
+
 </beans>  

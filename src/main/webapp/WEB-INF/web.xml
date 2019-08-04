@@ -3,48 +3,54 @@
          xmlns="http://java.sun.com/xml/ns/javaee"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          id="WebApp_ID" version="3.0">
-  <display-name>movie</display-name>
-  <!-- 配置springmvc编码过滤器 -->
-  <filter>
-    <filter-name>encoding</filter-name>
-    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-    <init-param>
-      <param-name>encoding</param-name>
-      <param-value>utf-8</param-value>
-    </init-param>
-  </filter>
-  <filter-mapping>
-    <filter-name>encoding</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
+    <display-name>movie</display-name>
+    <!-- 配置springmvc编码过滤器 -->
+    <filter>
+        <filter-name>encoding</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>utf-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encoding</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
-  <!--指明整合配置文件的名称和位置-->
-  <context-param>
-    <param-name>contextConfigLocation</param-name>
-    <!--使用单独的spring配置文件，以及单独的Spring-MVC配置文件-->
-    <param-value>classpath:spring/spring-config.xml</param-value>
-  </context-param>
+    <!--指明整合配置文件的名称和位置-->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <!--使用单独的spring配置文件，以及单独的Spring-MVC配置文件-->
+        <param-value>classpath:spring/spring-config.xml</param-value>
+    </context-param>
 
-  <!--所有监听器都是在tomcat启动的第一时刻执行 -->
-  <!--声明使用spring来整体管理当前项目-->
-  <listener>
-    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    <!--Spring配置文件：默认整合配置文件放在web-Inf下，applicationContext.xml,可以自行指定 -->
-  </listener>
-  <!-- 启动SpringMvc -->
-  <servlet>
-    <servlet-name>springmvc</servlet-name>
-    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-    <!-- 参数，读取:springmvc-servlet.xml -->
-    <init-param>
-      <param-name>contextConfigLocation</param-name>
-      <param-value>classpath:springmvc-servlet.xml</param-value>
-    </init-param>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>springmvc</servlet-name>
-    <url-pattern>/</url-pattern>
-  </servlet-mapping>
+    <!--所有监听器都是在tomcat启动的第一时刻执行 -->
+    <!--声明使用spring来整体管理当前项目-->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+        <!--Spring配置文件：默认整合配置文件放在web-Inf下，applicationContext.xml,可以自行指定 -->
+    </listener>
+    <!-- 启动SpringMvc -->
+    <servlet>
+        <servlet-name>springmvc</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!-- 参数，读取:springmvc-servlet.xml -->
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:springmvc-servlet.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>springmvc</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    <jsp-config>
+        <taglib>
+            <taglib-uri>http://java.sun.com/jsp/jstl/core</taglib-uri>
+            <taglib-location>/WEB-INF/tld/c.tld</taglib-location>
+        </taglib>
+    </jsp-config>
 
 </web-app>
