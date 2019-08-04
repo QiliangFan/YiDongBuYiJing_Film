@@ -27,7 +27,7 @@ public class UserServiceImpl  implements UserService {
 
     @Autowired
     UserMapper userMapper;
-    @Autowired
+//    @Autowired
     HttpServletRequest request;
 
     @Override

@@ -13,28 +13,70 @@
     <title>Title</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="application/x-javascript">
-        import {pagination} from "../../js/pagination";
-
-        var pageSize = 18;
-
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript">
         addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
         function hideURLbar(){ window.scrollTo(0,1); }
+    </script>
+    <script type="text/javascript">
+        var pageSize = 18;
+
+        function pagination(currentPage,pageSize,selectType,orderBy,sortType,value){
+            if(value == null) {
+                $.ajax({
+                    url: "/Movies/searchMovie",
+                    data: {
+                        currentPage: currentPage,
+                        pageSize: pageSize,
+                        selectType: selectType,
+                        orderBy: orderBy,
+                        sortType: sortType
+                    },
+                    type: "post",
+                });
+            }
+            else{
+                $.ajax({
+                    url: "/Movies/searchMovie",
+                    data: {
+                        currentPage: currentPage,
+                        pageSize: pageSize,
+                        selectType: selectType,
+                        orderBy: orderBy,
+                        sortType: sortType,
+                        value: value
+                    },
+                    type: "post",
+                });
+            }
+        }
+
+        var orderBy = ${orderBy};
+        var selectType =${selectType};
+        var sortType =${sortType};
+        var totalPage =${totalPage};
+        var value = ${value};
+
         $(function(){
             $("#first").click(function () {
-                pagination(1,pageSize,${selectType},${orderBy},${sortType});
+                alert(1);
+                pagination(1,pageSize,selectType,orderBy,sortType,value);
             });
             $("#pre").click(function () {
-                pagination(${currentPage-1},pageSize,${selectType},${orderBy},${sortType});
+                alert(2);
+                var currentPage = ${currentPage};
+                pagination(currentPage-1,pageSize,selectType,orderBy,sortType,value);
             });
             $("#next").click(function () {
-                pagination(${currentPage+1},pageSize,${selectType},${orderBy},${sortType});
+                alert(3);
+                var currentPage = ${currentPage};
+                pagination(currentPage+1,pageSize,selectType,orderBy,sortType,value);
             });
             $("#last").click(function () {
-                pagination(${totalPage},pageSize,${selectType},${orderBy},${sortType});
+                alert(4);
+                pagination(totalPage,pageSize,selectType,orderBy,sortType,value);
             });
         })
-
     </script>
     <!-- //for-mobile-apps -->
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
@@ -53,9 +95,9 @@
         <div class="wthree_agile-requested-movies">
 <c:forEach var="movie" items="${list}">
     <div class="col-md-2 w3l-movie-gride-agile requested-movies">
-        <a href="/MovieInf?movie=${movie}"><img src=${movie.img} title=${movie.movieName} class="img-responsive" alt=" ">
-            <div class="w3l-action-icon"></div>
-        </a>
+<%--        <a href="MovieInf?movie=${movie}"><img src=${movie.img} title=${movie.movieName} class="img-responsive" alt=" ">--%>
+<%--            <div class="w3l-action-icon"></div>--%>
+<%--        </a>--%>
         <div class="mid-1 agileits_w3layouts_mid_1_home">
             <div class="w3l-movie-text">
                 <h6 style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><a href="">${movie.movieName}</a></h6>
@@ -75,20 +117,20 @@
         </div>
         <div class="blog-pagenat-wthree">
             <ul>
-                <li><a id="first" class="frist">First</a></li>
+                <li><button id="first" class="frist">First</button></li>
                 <c:if test="${currentPage>1}">
-                    <li><a id="pre" class="frist">Prev</a></li>
+                    <li><button id="pre" class="frist">Prev</button></li>
                 </c:if>
                 <li><a href="#">${currentPage}</a></li>
                 <c:if test="${currentPage<totalPage}">
-                    <li><a id="next" class="last">Next</a></li>
+                    <li><button id="next" class="last">Next</button></li>
                 </c:if>
-                <li><a id="last" class="last">Last</a></li>
+                <li><button id="last" class="last">Last</button></li>
             </ul>
         </div>
     </div>
 </div>
-<script src="javascript/jquery-1.11.1.min.js"></script>
+
 <script type="text/javascript" src="js/jquery.zoomslider.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/simplePlayer.js"></script>
