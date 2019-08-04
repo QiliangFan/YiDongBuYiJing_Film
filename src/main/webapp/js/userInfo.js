@@ -106,6 +106,9 @@ window.onload = function () {
             $("button[value='7']").addClass("active");
         }
     });
+
+    $("tr:odd").css("background-color","#ffd267");
+    $("tr:even").css("background-color","rgba(231,215,52,0.62)");
 };
 
 function getPrefer() {
@@ -114,6 +117,7 @@ function getPrefer() {
         type: "POST",
         dataType: "json",
         async: true,
+        contentType:"application/json;charset=UTF8",
         error: function (data) {
             console.log("failed=>getPrefer")
             console.log(data);
@@ -133,6 +137,17 @@ function getPrefer() {
                     choose[i] = 0;
                 }
             }
+            $("#director").val(director);
+            $("#actor").val(actor);
+            for(var i=0;i<choose.length;i++)
+            {
+                if(choose[i]==1) {
+                    $("button[value='" +( i + 1) + "']").addClass("active");
+                }else{
+                    $("button[value='" + (i + 1 )+ "']").removeClass("active");
+                }
+
+            }
         }
     })
 }
@@ -140,12 +155,12 @@ function getPrefer() {
 setInterval(function () {
     for (var i = 0; i < choose.length; i++) {
         if (choose[i] == 1) {
-            $("button[value='" + i+1 + "']").addClass("active");
+            $("button[value='" + (i+1) + "']").addClass("active");
         } else {
-            $("button[value='" + i+1 + "']").removeClass("active");
+            $("button[value='" + (i+1) + "']").removeClass("active");
         }
     }
-}, 1000)
+}, 1000);
 
 function handleLeftBar() {
     $(".leftBar a").hide();
@@ -204,7 +219,8 @@ function getData() {
             $("#hideEmail").val(data["email"]);
             $("#hideUserName").val(data["userName"]);
             $("#hideAuthority").val(data["authority"]);
-            $("#hidePassword").val(data["password"]);
+            $("#password").val(data["password"]);
+            $("#confirmpassword").val(data["password"]);
             if (image && image.length > 0)
                 $("#headImage").attr("src", image);
             console.log("success=>getData");
@@ -235,18 +251,18 @@ function myHoby() {
             }
         }
         $.ajax({
-            url:"modifyUserInfo",
+            url:"updatePrefer",
             type:"POST",
             dataType:"json",
-            data:JSON.stringify({"id":user_prefer,"director":director,"actor":actor,"movieType":str}),
+            data:JSON.stringify({"id":user_prefer,"director":to_director,"actor":to_actor,"movieType":str}),
             error:function (data) {
-                console.log("failed=>modifyUserInfo");
+                console.log("failed=>updatePrefer");
                 console.log(data);
             },
             success:function (data) {
-                console.log("success=>modifyUserInfo");
+                getPrefer();
+                console.log("success=>updatePrefer");
                 console.log(data);
-
             }
         })
     },3000)
@@ -282,6 +298,25 @@ function myComments() {
     $("#myReply").hide();
     $("#myHistory").hide();
     $("#myComments").show();
+}
+
+function submitForm() {
+    var pwd1=$("input#password").val();
+    var pwd2=$("input#confirmpassword").val();
+    if(pwd1&&pwd1!=""&&pwd2&&pwd2!=""){
+        if(pwd1!=pwd2){
+            alert("两次密码不一致,请重新输入");
+            return false;
+        }else{
+            alert("修改成功!");
+            $("input#password").val(md5(pwd1));
+            $("input#confirmpassword").val(md5(pwd2));
+            return true;
+        }
+    }else{
+        alert("密码不能为空!");
+        return false;
+    }
 }
 
 // function getReply(offset, limit) {

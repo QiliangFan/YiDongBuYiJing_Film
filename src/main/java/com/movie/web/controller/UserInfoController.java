@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.*;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Controller
@@ -70,23 +71,40 @@ public class UserInfoController {
     public String modifyUserInfo(User user, MultipartFile headimage, ModelMap map){
         try {
             System.out.println(user);
-            String fileName = headimage.getOriginalFilename();
-            String path = request.getRealPath(".");
-            path += "/filesUpload/";
-            File file = new File(path + fileName);
-            FileUtils.copyInputStreamToFile(headimage.getInputStream(), file);
-            System.out.println(path+fileName);
+            try {
+                String fileName = headimage.getOriginalFilename();
+                fileName =user.getUserName()+fileName;
+                String path = request.getRealPath(".");
+                path += "/filesUpload/";
+                File file = new File(path + fileName);
+                FileUtils.copyInputStreamToFile(headimage.getInputStream(), file);
+                System.out.println(path + fileName);
+                userMapper.update(new User(user.getId(),
+                        user.getUserName(),
+                        user.getPassword(),
+                        user.getEmail(),
+                        user.getBirthday(),
+                        user.getGender(),
+                        user.getAuthority(),
+                        "/Movies/filesUpload/" + fileName));
+                map.put("modifyUserInfo", "success");
+                return "userInfo";
 
-            userMapper.update(new User(user.getId(),
-                    user.getUserName(),
-                    user.getPassword(),
-                    user.getEmail(),
-                    user.getBirthday(),
-                    user.getGender(),
-                    user.getAuthority(),
-                    "/Movies/filesUpload/"+fileName));
-            map.put("modifyUserInfo", "success");
-            return "userInfo";
+            }catch (Exception e) {
+                User originuser=userMapper.selectByName(user.getUserName());
+
+                userMapper.update(new User(user.getId(),
+                        user.getUserName(),
+                        user.getPassword(),
+                        user.getEmail(),
+                        user.getBirthday(),
+                        user.getGender(),
+                        user.getAuthority(),
+                        originuser.getImage()
+                        ));
+                map.put("modifyUserInfo", "success");
+                return "userInfo";
+            }
         }catch (Exception e){
             System.out.println("modifyUserInfo=>Exception");
             e.printStackTrace();

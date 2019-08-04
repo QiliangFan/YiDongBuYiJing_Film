@@ -59,6 +59,11 @@ span.choose{
     height: 100%;
 }
 
+
+form#modifyUserInfo{
+    margin-top: 10vh;
+}
+
 .headImgContainer{
     width: 100%;
     text-align: center;
@@ -67,8 +72,12 @@ span.choose{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
 }
+
+.row{
+    overflow: hidden;
+}
+
 
 .headImgContainer img{
     width: 50%;
@@ -154,3 +163,14 @@ button.mybutton:active{
 .active{
     background-color: #c98078 !important;
 }
+
+div#myHoby input{
+    border-radius: 26px;
+    box-shadow: #6c757d 0 0 5px;
+}
+
+div#personalInfo input{
+    border-radius: 15px;
+    box-shadow: #6c757d 0 0 3px;
+}
+
