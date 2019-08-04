@@ -6,10 +6,9 @@ import com.movie.dao.*;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-<<<<<<< HEAD
+
 import org.springframework.stereotype.Component;
-=======
->>>>>>> 3d4a2df8581f325c2f61070cf3657ec6ac227a4a
+
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
@@ -25,11 +24,10 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
-<<<<<<< HEAD
-@Service("userService")
-=======
+
+
+
 @Service
->>>>>>> 3d4a2df8581f325c2f61070cf3657ec6ac227a4a
 public class UserServiceImpl  implements UserService {
     public static String verifyCode=null;
 
