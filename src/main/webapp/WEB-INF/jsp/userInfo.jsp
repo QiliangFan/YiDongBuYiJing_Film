@@ -10,8 +10,7 @@
     <title>个人信息界面</title>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="js/md5.js"></script>
-    <script src="js/richtext.js"></script>
-    <script type="text/javascript" src="js/userInfo.js"></script>
+    <script type="text/javascript" src="js/userinfo.js"></script>
     <link rel="stylesheet" type="text/css" href="/Movies/bootstrap-4.3.1-dist/css/bootstrap.min.css"></link>
     <link rel="stylesheet" type="text/css" href="css/userInfo.css">
 </head>
@@ -61,7 +60,7 @@
                                                                                                           value="女" name="gender">女<br></span>
                     <span class="modifyItem">生日:<input type="date" name="birthday"></span><br>
                     <span class="modifyItem">密码:<input id="fpassword" type="password" name="fpassword"> </span><br>
-                    <span class="modifyItem">确认密码:<input id="fconfirmpassword"  type="fpassword" name="confirmpassword"></span><br>
+                    <span class="modifyItem">确认密码:<input id="fconfirmpassword"  type="password" name="fconfirmpassword"></span><br>
                     <span class="modifyItem" >上传头像:<input style="width: 4vw; text-decoration: none;box-shadow: #ffffff 0 0 0;border: 0;" class="upload" type="file" name="headimage"></span><br>
                     <span class="modifyItem"  style="text-align: center;"><input style="width: 6vw;" type="submit" value="确认修改"></span>
                 </form>
@@ -166,7 +165,7 @@
 
             </div>
         </div>
-    
+
     </div>
 </div>
 </body>

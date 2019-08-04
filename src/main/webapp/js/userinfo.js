@@ -129,10 +129,14 @@ function getPrefer() {
                 var reg = new RegExp(allMovieType[i]);
                 if (reg.test(movieType)) {
                     choose[i] = 1;
+                    $("button.mybutton[value='"+(i+1)+"']").addClass("active");
                 } else {
                     choose[i] = 0;
+                    $("button.mybutton[value='"+(i+1)+"']").removeClass("active");
                 }
             }
+            $("input#director").val(director);
+            $("input#actor").val(actor);
         }
     })
 }
@@ -235,16 +239,16 @@ function myHoby() {
             }
         }
         $.ajax({
-            url:"modifyUserInfo",
+            url:"updatePrefer",
             type:"POST",
             dataType:"json",
             data:JSON.stringify({"id":user_prefer,"director":director,"actor":actor,"movieType":str}),
             error:function (data) {
-                console.log("failed=>modifyUserInfo");
+                console.log("failed=>updatePrefer");
                 console.log(data);
             },
             success:function (data) {
-                console.log("success=>modifyUserInfo");
+                console.log("success=>updatePrefer");
                 console.log(data);
 
             }
@@ -284,14 +288,16 @@ function myComments() {
     $("#myComments").show();
 }
 
-function submit(){
+function submitForm(){
     var pwd1 = $("#fpassword").val();
     var pwd2 = $("#fconfirmpassword").val();
-    if(!pwd1&&!pwd2&&pwd1!=""&&pwd2!=""){
+    if(pwd1&&pwd2&&pwd1!=""&&pwd2!=""){
         if(pwd1!=pwd2){
             alert("两次密码不一致!");
             return false;
         }else{
+            $("#password").val(md5(pwd1));
+            $("#confirmpassword").val(md5(pwd2));
             alert("修改成功")
             return true;
         }

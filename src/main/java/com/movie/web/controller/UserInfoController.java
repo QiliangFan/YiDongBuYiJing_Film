@@ -69,6 +69,7 @@ public class UserInfoController {
 
     @RequestMapping("/modifyUserInfo")
     public String modifyUserInfo(User user, MultipartFile headimage, ModelMap map){
+
         try {
             System.out.println(user);
             try {
@@ -115,7 +116,6 @@ public class UserInfoController {
             }
         }catch (Exception e){
             System.out.println("modifyUserInfo=>Exception");
-            e.printStackTrace();
         }
         map.put("modifyUserInfo","fail");
         return "userInfo";
