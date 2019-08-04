@@ -166,14 +166,7 @@
 
             </div>
         </div>
-        <div id="t1"  style="margin:0;width:10vw;height:4vh;background-color: #ff787b;position:absolute;z-index: -1;">看什么看！</div>
-        <div id="t2" style="margin:0;width:10vw;height:4vh;background-color: #119aff;position:absolute;z-index: -1;"></div>
-        <div id="t3" style="margin:0;width:10vw;height:4vh;background-color: #4c13ff;position:absolute;z-index: -1;"></div>
-        <div id="t4" style="margin:0;width:10vw;height:4vh;background-color: #ff0ccf;position:absolute;z-index: -1;"></div>
-        <div id="t5" style="margin:0;width:10vw;height:4vh;background-color: #16ffc4;position:absolute;z-index: -1;"></div>
-        <div id="t6" style="margin:0;width:10vw;height:4vh;background-color: #3dff18;position:absolute;z-index: -1;"></div>
-        <div id="t7" style="margin:0;width:10vw;height:4vh;background-color: #fff415;position:absolute;z-index: -1;"></div>
-        <div id="run" style="margin:0;width:25vw;height:25vh;background:url('./img/run.gif') no-repeat;background-size:cover;position: absolute;z-index: -1;"></div>
+    
     </div>
 </div>
 </body>
