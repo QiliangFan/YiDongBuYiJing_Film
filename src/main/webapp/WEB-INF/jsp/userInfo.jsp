@@ -8,9 +8,9 @@
 <head>
     <base href="<%=basePath%>">
     <title>个人信息界面</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="js/md5.js"></script>
     <script src="js/richtext.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="js/userInfo.js"></script>
     <link rel="stylesheet" type="text/css" href="/Movies/bootstrap-4.3.1-dist/css/bootstrap.min.css"></link>
     <link rel="stylesheet" type="text/css" href="css/userInfo.css">
