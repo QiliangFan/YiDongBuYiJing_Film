@@ -23,6 +23,12 @@ public class MovieServiceImpl implements MovieService {
     private MovieMapper movieMapper;
 
     @Override
+    public Page<Movie> select(Select.SelectType type, Object value, Integer currentPage, Integer pageSize) {
+        return null;
+    }
+
+
+    @Override
     public Page<Movie> select(Select.SelectType selectType, Object value, Select.SortType sortType, Select.OrderBy orderBy, Integer currentPage, Integer pageSize) {
         Page<Movie> page = new Page<>();
         if (selectType != null && sortType != null && currentPage != null && pageSize != null) {

@@ -284,6 +284,16 @@ function myComments() {
     $("#myComments").show();
 }
 
+function submit(){
+    var pwd1 = $("#fpassword").val();
+    var pwd2 = $("#fconfirmpassword").val();
+    if(!pwd1&&!pwd2&&pwd1!=""&&pwd2!=""){
+
+    }else{
+        alert("密码不能为空")
+    }
+}
+
 // function getReply(offset, limit) {
 //     $.ajax({
 //         url: "getMyReply",
