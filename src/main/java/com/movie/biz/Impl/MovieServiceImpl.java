@@ -3,12 +3,14 @@ package com.movie.biz.Impl;
 import com.movie.biz.MovieService;
 import com.movie.dao.MovieMapper;
 import com.movie.domain.po.Movie;
-import com.movie.utils.Page;
-import com.movie.utils.SelectType;
+import com.movie.utils.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 /**
  * @author hehe
@@ -21,18 +23,61 @@ public class MovieServiceImpl implements MovieService {
     private MovieMapper movieMapper;
 
     @Override
-    public Page<Movie> select(SelectType type, Object value, Integer currentPage, Integer pageSize) {
+    public Page<Movie> select(Select.SelectType selectType, Object value, Select.SortType sortType, Select.OrderBy orderBy, Integer currentPage, Integer pageSize) {
         Page<Movie> page = new Page<>();
-        if (type != null && currentPage != null && pageSize != null) {
+        if (selectType != null && sortType != null && currentPage != null && pageSize != null) {
             //获取所有电影
             List<Movie> list = movieMapper.selectAll();
+
+            //根据排序类型对list进行排序
+            switch (sortType) {
+                case Time:{
+                    list.sort((o1, o2) -> {
+                        if(orderBy == Select.OrderBy.ASC)
+                        {
+                            return o1.getReleaseDate().compareTo(o2.getReleaseDate());
+                        }
+                        else
+                        {
+                            return o2.getReleaseDate().compareTo(o1.getReleaseDate());
+                        }
+                    });
+                    break;
+                }
+                case Grade:{
+                    list.sort((o1, o2) -> {
+                        if(orderBy == Select.OrderBy.ASC)
+                        {
+                            return Double.compare(o1.getGrade()/o1.getNumOfPeople(),o2.getGrade()/o2.getNumOfPeople());
+                        }
+                        else
+                        {
+                            return Double.compare(o2.getGrade()/o2.getNumOfPeople(),o1.getGrade()/o1.getNumOfPeople());
+                        }
+                    });
+                    break;
+                }
+                case numOfPeople:{
+                    list.sort((o1, o2) -> {
+                        if(orderBy == Select.OrderBy.ASC)
+                        {
+                            return Integer.compare(o1.getNumOfPeople(),o2.getNumOfPeople());
+                        }
+                        else
+                        {
+                            return Double.compare(o2.getNumOfPeople(),o1.getNumOfPeople());
+                        }
+                    });
+                    break;
+                }
+            }
 
             //根据不同的查找类型对list进行筛选
             List<Movie> temp = new ArrayList<>();
             for (Movie m :
                     list) {
 
-                switch (type) {
+                switch (selectType) {
                     case All: {
                         temp.add(m);
                         break;
@@ -51,6 +96,24 @@ public class MovieServiceImpl implements MovieService {
                     }
                     case MovieKind: {
                         if (m.getMovieKind().contains((String) value)) {
+                            temp.add(m);
+                        }
+                        break;
+                    }
+                    case Actor:{
+                        if (m.getActor().contains((String) value)) {
+                            temp.add(m);
+                        }
+                        break;
+                    }
+                    case Director:{
+                        if (m.getDirector().contains((String) value)) {
+                            temp.add(m);
+                        }
+                        break;
+                    }
+                    case ScreenWriter:{
+                        if (m.getScreenWriter().contains((String) value)) {
                             temp.add(m);
                         }
                         break;

@@ -9,6 +9,8 @@ public class Reply {
     private Integer userId;
     private FilmReview filmReview;
 
+
+
     public FilmReview getFilmReview() {
         return filmReview;
     }

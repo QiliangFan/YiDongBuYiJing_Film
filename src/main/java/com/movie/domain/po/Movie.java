@@ -62,8 +62,13 @@ public class Movie {
         this.img = img;
     }
 
+<<<<<<< HEAD
     public Movie() {
     }
+=======
+
+
+>>>>>>> 3d4a2df8581f325c2f61070cf3657ec6ac227a4a
 
     public Integer getId() {
         return id;
