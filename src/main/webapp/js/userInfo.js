@@ -107,8 +107,8 @@ window.onload = function () {
         }
     });
 
-    $("tr:odd").css("background-color","#ffd267");
-    $("tr:even").css("background-color","rgba(231,215,52,0.62)");
+    $("tr:odd").css("background-color","#ffe8c4");
+    $("tr:even").css("background-color","rgba(231,215,52,0.38)");
 };
 
 function getPrefer() {
@@ -301,8 +301,8 @@ function myComments() {
 }
 
 function submitForm() {
-    var pwd1=$("input#password").val();
-    var pwd2=$("input#confirmpassword").val();
+    var pwd1=$("input#fpassword").val();
+    var pwd2=$("input#fconfirmpassword").val();
     if(pwd1&&pwd1!=""&&pwd2&&pwd2!=""){
         if(pwd1!=pwd2){
             alert("两次密码不一致,请重新输入");

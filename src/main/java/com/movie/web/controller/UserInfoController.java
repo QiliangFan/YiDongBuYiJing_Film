@@ -73,6 +73,14 @@ public class UserInfoController {
             System.out.println(user);
             try {
                 String fileName = headimage.getOriginalFilename();
+                if(fileName==null||fileName==""){
+                    throw new Exception();
+                }
+                String type=headimage.getContentType();
+                if(!type.equals("image/jpeg")&&!type.equals("image/png")&&!type.equals("image/gif")){
+                    throw new Exception();
+                }
+                System.out.println(type);
                 fileName =user.getUserName()+fileName;
                 String path = request.getRealPath(".");
                 path += "/filesUpload/";

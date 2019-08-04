@@ -1,0 +1,337 @@
+body{
+    width:98vw;
+    height:96vh;
+    background: rgba(255, 242, 213, 0.64);
+    position:relative;
+    z-index: -5;
+    overflow: hidden;
+}
+
+div.ab{
+    position: relative;
+    z-index: auto;
+}
+
+div.row{
+    text-align: center;
+    z-index: auto;
+}
+
+div.align{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.toolbar{
+    width: 100%;
+    display: inline-block;
+    margin-top: 10vh;
+    background: rgba(231, 242, 237, 0.41);
+    z-index: 1;
+}
+
+div.col-lg-6{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.toolbar-bottom{
+    width: 100%;
+    display: inline-block;
+    margin-top: 0;
+    background: rgba(231, 242, 237, 0.41);
+}
+
+div.toolbar >a>img{
+    width: 2vw;
+    height: 2vw;
+    display: inline-block;
+    margin-left: 1vw;
+
+}
+
+div.toolbar-bottom >a>img{
+    width: 2vw;
+    height: 2vw;
+    display: inline-block;
+    margin-left: 1vw;
+
+}
+
+div#richtext{
+    width: 100%;
+    resize:none;
+    overflow: auto;
+    text-align: left;
+    background: rgb(231, 242, 237);
+    height: 50vh;
+    overflow: auto;
+}
+
+div#richtext:hover{
+    box-shadow:0 0 5px #6c757d;
+    animation: shakeX ease-in-out 5s;
+}
+
+div.leftBar{
+    border-bottom-right-radius: 26px;
+    border-top-right-radius: 26px;
+    width:20%;
+    height: 100vh;
+    background: #ffa2b0;
+    position: relative;
+
+    transition: width 1s, font-size 0.5s;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: center;
+}
+
+div.leftBar >img{
+    margin-bottom: 5vh;
+    cursor:pointer;
+
+}
+
+div.leftBar:hover{
+    width: 50%;
+    font-size:2vw;
+    box-shadow:0 0 5px #6c757d;
+    left:0 !important;
+}
+
+span.myspan{
+    font-size:1.5vw;
+    font-weight: bolder;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    text-shadow: 1.5px 1.5px #6c757d;
+    cursor:pointer;
+}
+span.myspan:not(:hover),img.displaynone:not(:hover){
+    display: none;
+}
+span.myspan:hover{
+    text-shadow: 0 0 3px #8fd19e;
+}
+
+
+a{
+    color:black;
+    width: 100%;
+    margin:2vh auto;
+    -webkit-animation: tr;
+    -o-animation: tr;
+}
+
+a:hover{
+    color: #5bccff;
+    text-decoration: none;
+
+}
+
+img.displaynone{
+    width: 80%;
+    border-radius: 26px;
+}
+
+img.displaynone:hover{
+    box-shadow:0 0 9px rgba(101, 170, 242, 0.6);
+}
+
+div.myalert:hover{
+    animation: shakeX 1s;
+    box-shadow: 0 0 5px rgba(242, 237, 60, 0.73);
+    cursor: url("./img/heart.png") auto;
+}
+
+div.myalert{
+    animation: shakeY 1s;
+    text-align: right;
+    border-radius:26px;
+}
+
+div.myalert1{
+    animation: shakeX 1s;
+    text-align: left;
+    border-radius:26px;
+}
+
+div.myalert1:hover{
+    animation: shakeY 1s;
+    text-align: right;
+    box-shadow: 0 0 10px rgba(101, 170, 242, 0.73);
+}
+
+p.myp{
+    font-size: 5vw;
+    font-weight: bolder;
+
+}
+
+p.myp1{
+    font-size: 3.2vw;
+    color:white;
+    font-weight: bolder;
+    width:1em;
+    margin-left: 4vw;
+}
+
+
+@keyframes shakeX {
+    0%,100%{
+        transform: translateX(0);
+    }
+    10%,
+    30%,
+    50%,
+    70%,
+    90%{
+        transform: translateX(-3px) scaleX(0.98);
+
+    }
+    20%,
+    40%,
+    60%,
+    80%{
+        transform: translateX(3px) scaleX(1.02);
+    }
+}
+
+@keyframes shakeY {
+    0%,100%{
+        transform: translateY(0);
+    }
+    10%,
+    30%,
+    50%,
+    70%,
+    90%{
+        transform: translateY(-5px);
+    }
+    20%,
+    40%,
+    60%,
+    80%{
+        transform: translateY(5px);
+    }
+}
+
+@keyframes move {
+    0%{
+        right: 100vw;
+        transform: translateY(0vh);
+    }
+    25%{
+        right: 75vw;transform: translateY(-10vh);
+    }
+    50%{
+        right:50vw;
+        transform: translateY(10vh);
+    }
+    75%{
+        right:25vw;
+        transform: translateY(-10vh);
+    }
+    100%{
+        right: 0vw;
+        transform: translateY(0vh);
+}
+}
+
+@keyframes myrun {
+    0%{
+        left: -10vw;
+    }
+    25%{
+        left:25vw
+    }
+    50%{
+        left:50vw;
+    }
+    75%{
+        left:75vw;
+    }
+    100%{
+        left:100vw;
+    }
+}
+
+@keyframes moveReverse {
+    0%{
+        left: 0vw;
+        transform: translateY(0vh);
+        color: #f2af1d;
+    }
+    25%{
+        left: 25vw;
+        transform: translateY(-10vh);
+    }
+    50%{
+        left:50vw;
+        transform: translateY(10vh);
+    }
+    75%{
+        left:75vw;
+        transform:translateY(-10vh);
+    }
+    100%{
+        left: 100vw;
+        transform:translateY(0);
+    }
+}
+
+#run{
+    animation: myrun 10s linear infinite normal;
+    top: 76vh;
+}
+
+#t1{
+    font-size: 0;
+     animation: moveReverse 12s linear  infinite  reverse;
+ }
+#t2{
+    right: 100vw;
+    animation: move 10s linear infinite reverse;
+}
+#t3{
+    right: 100vw;
+    animation: move 11s linear infinite normal;
+}
+#t4{
+    right: 100vw;
+    animation: move 8s linear infinite normal;
+}
+#t5{
+    animation: moveReverse 9s linear infinite reverse;
+}
+#t6{
+    right: 100vw;
+    animation: move 9.5s linear infinite normal;
+}
+#t7{
+    animation: moveReverse 10.5s linear infinite normal;
+    color: #11b1d9;
+}
+
+
+.mybutton{
+
+    width: 10vw;
+    background: #9fcdff;
+    border-radius: 26px;
+    margin:auto;
+    cursor: pointer;
+    margin-top: 4vh;
+}
+
+.mybutton:hover{
+    box-shadow:0 0 3px #4e555b;
+}
+
+.mywords{
+    font-weight: bolder;
+    font-size: 2vw;
+}
