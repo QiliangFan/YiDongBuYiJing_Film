@@ -93,4 +93,8 @@
         select count(*)
         from Users;
     </select>
+    <select id="selectById" parameterType="java.lang.Integer" resultType="User">
+        select * from Users
+        where id = #{id}
+    </select>
 </mapper>

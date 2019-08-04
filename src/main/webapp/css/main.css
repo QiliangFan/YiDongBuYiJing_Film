@@ -1,0 +1,237 @@
+*{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+ol,ul{list-style:none;margin:0px;padding:0px;}
+a{text-decoration:none;}
+img{max-width:100%;}
+table{border-collapse:collapse;border-spacing:0;}
+html{
+	height: 100%;}
+body{
+	font-family: 'Muli', sans-serif;
+    background:url(../img/bg8.jpg) no-repeat;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    background-size:cover;
+    background-attachment: fixed;
+}
+.black{
+    background-color: rgba(22, 19, 19, 0.452);
+    height: 100%;
+    width: 100%;
+    background-attachment: fixed;
+    -webkit-background-size:cover;
+	-moz-background-size:cover;
+    background-size:cover;
+    overflow: auto;
+}
+.nav{
+    /*padding: 2.5em 8em;*/
+}
+.nav-left{
+    float: left;
+}
+.nav-left h1{
+    font-size: 3em;
+    font-weight: 300;
+	line-height: .9em;
+}
+.nav-left h1 a{
+    color: #fff;
+}
+.nav-right{
+    float: right;
+    margin-top: 0.7em;
+}
+.nav-right ul li {
+    display: inline-block;
+    margin:0 1.2em;
+}
+.nav-right ul li a{
+	color:#fff;
+	font-size: 1em;
+	-webkit-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	-o-transition: 0.5s all;
+	-ms-transition: 0.5s all;
+	transition: 0.5s all;
+}
+.nav-right ul li a:hover{
+	color:#04c9f9;
+}
+.silde{
+	height:500px;
+	background: url(../img/bg7.jpg) no-repeat;
+	background-size: 100% 100%;
+	width:100%;
+}
+.sildeblack{
+	height:500px;
+	background-color: rgba(22, 19, 19, 0.452);
+	width:100%;
+}
+.hot1{
+	background-color: #EDEFF0;
+	width:100%;
+	height:750px;
+}
+.hot{
+	background-color: #EDEFF0;
+	width:100%;
+	height: 970px;
+}
+.populardiv{
+	border:1px solid rgb(230, 236, 248);
+}
+.popularfont{
+	font-size: 1.3em;
+    font-weight: 600;
+	line-height: .9em;
+	color:black;
+	padding-top: 3%;
+	padding-left: 10%;
+}
+.box {
+	margin-left:20px;
+	margin-right:0px;
+	padding-left:0px;
+	margin-top:20px;
+	display:flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	width:100%
+}
+.div5{
+	/* padding-left: 100px; */
+	height:150px;
+	margin-top: 6%;
+}
+.div5 li {
+	float: left;
+	list-style: none;
+}
+.div5 a img{
+	height:150px;
+	/*width:120px;*/
+}
+.div6{
+	height:30px;
+	padding-left: 10px;
+}
+.div6 li {
+	float: left;
+	list-style: none;
+	width:165px;
+	display:block;
+	overflow:hidden;
+	word-break:keep-all;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+.div6 a{
+	font-size:14px;
+	font-family:"Arial";
+	vertical-align: middle;
+	text-decoration-line: none;
+	color:black;
+}
+
+.div7{
+	height:30px;
+	padding-left: 10px;
+}
+.div7 li {
+	float: left;
+	list-style: none;
+	width:165px;
+	display:block;
+	overflow:hidden;
+	word-break:keep-all;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+.div7 a{
+	font-size:15px;
+	font-family:"Arial";
+	vertical-align: middle;
+	text-decoration-line: none;
+	color:black;
+}
+.footer{
+	background: #e90e65;
+	display: flex;
+	justify-content: space-around;
+	height:680px;
+}
+footer .contact-form {
+	border-radius: 25px;
+	padding: 35px;
+	background-color: #fff;
+	box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
+	width: 100%;
+	max-width: 380px;
+	/*margin: 117px auto;*/
+}
+footer .contact-form h3{
+	color: #e90e65;
+	font-size: 20px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+footer .contact-form .form-control{
+	margin-bottom: 20px;
+	border: none;
+	background-color: #ebd8df;
+	border-radius: 25px;
+	font-size: 15px;
+	padding: 25px 30px;
+	margin-left: 5%;
+	width:300px;
+
+
+}
+footer .contact-form ::-webkit-input-placeholder {
+	color: #928f8f;
+}
+footer .contact-form textarea {
+	height: 203px;
+	resize: none;
+	padding-top: 20px !important;
+}
+footer .contact-form textarea:focus {
+	outline: none;
+}
+footer .contact-form button {
+	background: #e90e65;
+	width: 140px;
+	padding: 13px 0;
+	font-size: 15px;
+	color: #fff;
+	border: none;
+	border-radius: 40px;
+	margin: 0 auto;
+	display: block;
+	cursor: pointer;
+}
+footer .contact-form button:hover, footer .contact-form button:visited {
+	background: #b90b50;
+	outline: none;
+}
+input:focus {
+	outline: none;
+}
+.last{
+	padding-top: 5%;
+	padding-bottom: 5%;
+}
+.img1{
+	padding-top: 18%;
+	padding-bottom: 5%;
+}
+.popularul li{
+	float: left;
+	list-style: none;
+	padding-top:55px;
+	width: 15%;
+	margin-left: 5%;
+}
+

@@ -25,6 +25,7 @@
     <param-value>classpath:spring/spring-config.xml</param-value>
   </context-param>
 
+
   <!--所有监听器都是在tomcat启动的第一时刻执行 -->
   <!--声明使用spring来整体管理当前项目-->
   <listener>

@@ -1,0 +1,13 @@
+.information span
+{
+    font-weight: bold;
+}
+.describe
+{
+    float: left;
+    width: 500px;
+}
+.information
+{
+    padding-right: 150px;
+}

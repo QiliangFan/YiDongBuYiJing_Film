@@ -3,6 +3,9 @@ package com.movie.biz;
 import com.movie.domain.po.Movie;
 import com.movie.utils.Page;
 import com.movie.utils.SelectType;
+
+import java.util.List;
+
 /**
  * @author hehe
  * @version 1.0
@@ -17,7 +20,7 @@ public interface MovieService {
      * @param pageSize
      * @return
      */
-    Page<Movie> select(SelectType type,Object value, Integer currentPage, Integer pageSize);
+    Page<Movie> select(SelectType type, Object value, Integer currentPage, Integer pageSize);
 
     /**
      * 增加电影
@@ -39,5 +42,9 @@ public interface MovieService {
      * @return
      */
     Boolean delete(Integer id);
+
+    List<Movie> findMovieByScore();
+    List<Movie> findMovieByNumOfPeople();
+    Movie findMovieById(Integer id);
 
 }

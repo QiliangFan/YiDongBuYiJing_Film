@@ -8,11 +8,13 @@ import jdk.internal.util.xml.impl.Input;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 import java.util.Properties;
 
 import javax.mail.*;
@@ -21,14 +23,14 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
-@Component
+@Service("userService")
 public class UserServiceImpl  implements UserService {
     public static String verifyCode=null;
 
 
     @Autowired
     UserMapper userMapper;
-    @Autowired
+
     HttpServletRequest request;
 
     @Override
@@ -89,6 +91,12 @@ public class UserServiceImpl  implements UserService {
     }
 
     @Override
+    public User findUserById(Integer id) {
+        User user = userMapper.selectById(id);
+        return user;
+    }
+
+    @Override
     public String forgetPwd(String username) {
 //        User user = userMapper.selectByName(username);
 //        String email = user.getEmail();
@@ -145,5 +153,18 @@ public class UserServiceImpl  implements UserService {
         }
         System.out.println(path);
         return false;
+    }
+
+    @Override
+    public List<User> findAll() {
+        return userMapper.selectAll(0,100);
+    }
+
+
+
+    @Override
+    public boolean delete(Integer userId) {
+        if(userMapper.deleteById(userId)>=0) return true;
+        else return false;
     }
 }

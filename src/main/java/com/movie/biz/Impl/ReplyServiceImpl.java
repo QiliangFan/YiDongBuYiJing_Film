@@ -55,7 +55,7 @@ public class ReplyServiceImpl implements ReplyService {
     @Override
     public List<Reply> showRepliesByFilmReviewId(Integer filmReviewId,Integer currentPage,Integer limit) {
         Integer offset=(currentPage-1)*limit;
-        List<Reply> replies=replyMapper.selectByUserId(filmReviewId,offset,limit);
+        List<Reply> replies=replyMapper.selectByFilmReviewId(filmReviewId,offset,limit);
         return replies;
     }
 
@@ -66,5 +66,15 @@ public class ReplyServiceImpl implements ReplyService {
         int totalPage=count/limit;
         return count% totalPage ==0 ?totalPage:totalPage+1;
 
+    }
+    @Override
+    public List<Reply> showAll() {
+        return replyMapper.selectAll();
+    }
+
+    @Override
+    public boolean delete(Integer replyId) {
+        if(replyMapper.deleteById(replyId)>=0) return true;
+        else return false;
     }
 }
