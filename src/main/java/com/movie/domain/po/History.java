@@ -6,17 +6,7 @@ public class History {
     private Integer userId;
     private  Integer movieId;
 
-
-    Movie movie;
-
-    public History(Integer id, String event, String time, Integer userId, Integer movieId, Movie movie) {
-        this.id = id;
-        this.event = event;
-        this.time = time;
-        this.userId = userId;
-        this.movieId = movieId;
-        this.movie = movie;
-    }
+    private Movie movie;
 
     public Movie getMovie() {
         return movie;

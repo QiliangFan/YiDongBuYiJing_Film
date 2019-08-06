@@ -53,16 +53,22 @@
     </script>
 </head>
 <body>
-<form action="managerAddUser" method="post" class="bootstrap-frm">
+<form action="managerAddUser" method="post" class="bootstrap-frm" enctype="multipart/form-data">
     用户名：<input type="text" name="userName"><br>
     密码:<input type="text" name="password"><br>
     邮箱：<input type="text" name="email"><br>
     生日：<input type="text" name="birthday"id="input_date"><br>
     性别：<input type="text" name="gender"><br>
     身份：<input type="text" name="authority"><br>
-    用户头像： <a href="javascript:;" class="a-upload" style="padding-bottom: 5%;">
-    <input type="file" style="margin-left: 4%;margin-top: 3%;" name="img" id="">上传文件
-</a><br>
+    用户头像： <div class="a-upload" style="padding-bottom: 5%;">
+    <div align="center">
+        <span class="fileinput-button" >
+            <span>上传文件</span>
+            <input type="file" name="img" style="position: absolute;right: 0px;top: 0px;opacity: 0;-ms-filter: 'alpha(opacity=0)';font-size: 200px;">
+        </span>
+    </div>
+</div>
+    <br>
     <br><br>
     <input type="submit" value="提交" class="sub" style="margin-left: 130px;">
 </form>

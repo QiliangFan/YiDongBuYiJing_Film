@@ -40,4 +40,9 @@
         select count(*) from FilmReviews
         where movieId=#{movieId}
     </select>
+    <select id="selectFilmReviewById" resultType="FilmReview">
+        select *
+        from FilmReviews
+        where id = #{id}
+    </select>
 </mapper>

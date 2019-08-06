@@ -106,8 +106,25 @@
     <link rel="stylesheet" type="text/css" href="css/zoomslider2.css" />
 
     <script type="text/javascript" src="js/movieinfo.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var msg = $('#msg').val();
+
+            if(msg == "发表影评成功"){
+                alert("发表影评成功");
+                $('#msg').val('');
+            }
+            if(msg == "发表影评失败"){
+                alert("发表影评失败");
+                $('#msg').val('');
+            }
+        })
+
+    </script>
 </head>
+
 <body>
+<input style="display: none" value="${msg}" id="msg">
 <%--<%--%>
 <%--    List<String[]> afilmlist=(List<String[]>)request.getAttribute("afilm");--%>
 <%--%>--%>
@@ -148,7 +165,7 @@
             <form onsubmit="return checkreply()" action="writeReply" method="post">
                 <div style="display:flex;flex-direction:column;align-items:center;justify-content:flex-start;">
                     <input id="userId" name="userId" style="display:none;" value="${sessionScope.user.id}">
-                    <input id="filmReviewId" name="filmReviewId" style="display:none;" value="${replies.get(0).filmReview.id}">
+                    <input id="filmReviewId" name="filmReviewId" style="display:none;" value="${filmReviewId}">
                     <textarea rows="5" cols="100" name="content" id="content" placeholder="写些看法吧~~" style="font-size: 13px;"></textarea>
                     <input style="align-self:center;margin-top:20px;margin-bottom:20px;" type="submit" class="input3" value="提交"/>
                 </div>

@@ -63,6 +63,6 @@ public interface MovieMapper {
 
     List<Movie> selectAllSortByScore();
     List<Movie> selectAllSortByNumOfPeople();
-    Movie selectMovieById(Integer id);
+    Movie selectMovieById(@Param("id") Integer id);
 
 }

@@ -3,14 +3,21 @@ package com.movie.web.controller;
 import com.movie.biz.*;
 import com.movie.domain.po.*;
 import com.movie.utils.Page;
+import com.movie.utils.Select;
 import com.movie.utils.SelectType;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -33,15 +40,26 @@ public class ManagerCotroller {
     @Autowired
     private MessageService messageService;
 
+    @Autowired
+    private HttpServletRequest request;
+
     @RequestMapping("/managerToAddMovie")
     public String toAddMovie() {
         return "manageraddmovie";
     }
 
     @PostMapping("/managerAddMovie")
-    public String addMovie(Movie movie) {
+    public String addMovie(Movie movie, MultipartFile image) throws IOException {
+
+        String fileName=movie.getMovieName()+".jpg";
+        String path=request.getRealPath(".");
+        path+="/filesUpload/";
+        File file=new File(path+fileName);
+        FileUtils.copyInputStreamToFile(image.getInputStream(),file);
+        System.out.println(path+fileName);
+        movie.setImg("/Movies/filesUpload/"+fileName);
         boolean judge = movieService.add(movie);
-        System.out.println(judge);
+     System.out.println(judge);
         return "redirect:/managerToShowAllMovies";
     }
 
@@ -51,7 +69,7 @@ public class ManagerCotroller {
         if (pageIndex == null) {
             pageIndex = 1;
         }
-        Page<Movie> page = movieService.select(SelectType.All, "", pageIndex, 25);
+        Page<Movie> page = movieService.select(Select.SelectType.All, "", Select.SortType.Time , Select.OrderBy.DESC, pageIndex,25);
         List<Movie> movies = page.getList();
         mv.addObject("movies", movies);
         Integer totalPage = page.getTotalPage();
@@ -91,8 +109,15 @@ public class ManagerCotroller {
         return mv;
     }
     @RequestMapping(value="/managerUpdateMovie",method= RequestMethod.POST)
-    public String UpdateMovie(Movie movie)
-    {
+    public String UpdateMovie(Movie movie,MultipartFile image) throws IOException {
+
+        String fileName=movie.getMovieName()+".jpg";
+        String path=request.getRealPath(".");
+        path+="/filesUpload/";
+        File file=new File(path+fileName);
+        FileUtils.copyInputStreamToFile(image.getInputStream(),file);
+        System.out.println(path+fileName);
+        movie.setImg("/Movies/filesUpload/"+fileName);
 
         boolean judge = movieService.update(movie);
         System.out.println(judge);
@@ -104,7 +129,14 @@ public class ManagerCotroller {
     }
 
 @PostMapping("/managerAddUser")
-public String addUser(User user) {
+public String addUser(User user,MultipartFile img) throws IOException {
+    String fileName=user.getUserName()+".jpg";
+    String path=request.getRealPath(".");
+    path+="/filesUpload/";
+    File file=new File(path+fileName);
+    FileUtils.copyInputStreamToFile(img.getInputStream(),file);
+    System.out.println(path+fileName);
+   user.setImage("/Movies/filesUpload/"+fileName);
     boolean judge = userService.register(user);
     System.out.println(judge);
     return "redirect:/managerToShowAllUsers";
@@ -130,9 +162,14 @@ public ModelAndView toUpdateUser(Integer userId)
     return mv;
 }
     @RequestMapping(value="/managerUpdateUser" ,method = RequestMethod.POST)
-    public String UpdateUser(User user)
-    {
-
+    public String UpdateUser(User user,MultipartFile img) throws IOException {
+        String fileName=user.getUserName()+".jpg";
+        String path=request.getRealPath(".");
+        path+="/filesUpload/";
+        File file=new File(path+fileName);
+        FileUtils.copyInputStreamToFile(img.getInputStream(),file);
+        System.out.println(path+fileName);
+        user.setImage("/Movies/filesUpload/"+fileName);
         boolean judge = userService.update(user);
         System.out.println(judge);
         return "redirect:/managerToShowAllUsers";

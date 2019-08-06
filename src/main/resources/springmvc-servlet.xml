@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	   xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:context="http://www.springframework.org/schema/context"
 	   xmlns:p="http://www.springframework.org/schema/p"
-	   xmlns:mvc="http://www.springframework.org/schema/mvc"
-	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	   xsi:schemaLocation="
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="  
             http://www.springframework.org/schema/beans       
             http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
             http://www.springframework.org/schema/context   
@@ -15,10 +15,9 @@
 	<mvc:annotation-driven /> 		<!-- 让当前项目具有使用mvc 注解的能力 -->
 	<!-- 让当前项目识别所有的带有注解的控制器，并注册到当前项目中以备使用 -->
 	<context:component-scan
-			base-package="com.movie.web.controller" />
+		base-package="com.movie.web.controller" />
 	<context:component-scan
 			base-package="com.movie.biz" />
-<<<<<<< HEAD
 	<mvc:resources mapping="/css/**" location="/css/"></mvc:resources>
 	<mvc:resources mapping="/img/**" location="/img/"></mvc:resources>
 	<mvc:resources mapping="/js/**" location="/js/"></mvc:resources>
@@ -27,12 +26,6 @@
     <mvc:resources mapping="/images/**" location="/images/"></mvc:resources>
     <mvc:resources mapping="/javascript/**" location="/javascript/"></mvc:resources>
 	<mvc:resources mapping="/filesUpload/**" location="/filesUpload/"></mvc:resources>
-=======
-
-	<mvc:resources mapping="/css/**" location="/css/"></mvc:resources>
-	<mvc:resources mapping="/img/**" location="/img/"></mvc:resources>
-	<mvc:resources mapping="/js/**" location="/js/"></mvc:resources>
->>>>>>> 3d4a2df8581f325c2f61070cf3657ec6ac227a4a
 	<mvc:default-servlet-handler></mvc:default-servlet-handler>
 
 	<!-- 声明文件上传解析器-->
@@ -42,18 +35,10 @@
 		<property name="maxUploadSize" value="1024000"></property>
 	</bean>
 
-	<mvc:resources mapping="/filesUplaod/**" location="/filesUpload/"></mvc:resources>
-	<mvc:resources mapping="/css/**" location="/css/"></mvc:resources>
-	<mvc:resources mapping="/img/**" location="/img/"></mvc:resources>
-	<mvc:resources mapping="/js/**" location="/js/"></mvc:resources>
-	<mvc:resources mapping="/bootstrap-4.3.1-dist/**" location="/bootstrap-4.3.1-dist/"></mvc:resources>
-	<mvc:default-servlet-handler></mvc:default-servlet-handler>
-
 	<!-- 逻辑视图名和物理视图的绑定 -->
 	<bean id="viewResolver"
-		  class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsp/" />	<!-- 指明物理视图的前缀 -->
 		<property name="suffix" value=".jsp" />			<!-- 指明物理视图的后缀 -->
 	</bean>
-
 </beans>  

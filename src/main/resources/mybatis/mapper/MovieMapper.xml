@@ -78,9 +78,9 @@
     <select id="selectPrefer" parameterType="UserPrefer" resultType="Movie">
         select *
         from Movies
-        where Movies.movieKind like '${movieType}' or
-        Movies.director = #{director} or
-        Movies.actor like '${actor}'
+        where Movies.movieKind like '%${movieType}%' or
+        Movies.director = like '%${director}%' or
+        Movies.actor like '%${actor}%'
     </select>
     <select id="selectAllSortByScore" resultType="Movie">
         select *

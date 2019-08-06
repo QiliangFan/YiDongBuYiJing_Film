@@ -35,6 +35,7 @@ public interface HistoryMapper {
      */
     List<History> selectByUserId(@Param("userId") Integer userId, @Param("offset") Integer offset, @Param("limit") Integer limit);
 
+    List<History> selectByUserId2(@Param("userId") Integer userId);
     /**
      * 通过电影ID获取历史
      * @param movieId
@@ -44,8 +45,6 @@ public interface HistoryMapper {
      */
     List<History> selectByMovieId(@Param("movieId") Integer movieId, @Param("offset") Integer offset, @Param("limit") Integer limit);
 
-
-    List<History> selectByUserId2(@Param("userId") Integer userId);
     /**
      * 通过id删除历史
      * @param id

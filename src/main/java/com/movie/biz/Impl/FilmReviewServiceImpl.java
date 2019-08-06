@@ -6,6 +6,7 @@ import com.movie.domain.po.FilmReview;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @Service("filmReviewService")
@@ -17,7 +18,7 @@ public class FilmReviewServiceImpl implements FilmReviewService {
 
     @Override
     public boolean writeFilmReview(String review, Integer userId, Integer movieId) {
-        FilmReview filmReview = new FilmReview(0,""+System.currentTimeMillis(),review,0,0,userId,movieId);
+        FilmReview filmReview = new FilmReview(0,""+new Timestamp(System.currentTimeMillis()),review,0,0,userId,movieId);
         int a = filmReviewMapper.add(filmReview);
         if(a==1){
             System.out.println("发表影评成功");

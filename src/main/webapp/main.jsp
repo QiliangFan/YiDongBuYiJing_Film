@@ -35,10 +35,51 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link href="css/font-awesome.css" rel="stylesheet">
     <script type="text/javascript" src="javascript/modernizr-2.6.2.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            // var id = $('#user1').val();
+            // alert(id);
+
+            var msg = $('#msg').val();
+            if(msg == "1"){
+                alert("留言成功");
+                $('#msg').val('');
+            }
+            if(msg == "0"){
+                alert("留言失败");
+                $('#msg').val('');
+            }
+            if(msg == "找回密码失败"){
+                alert("找回密码失败");
+                $('#msg').val('');
+            }
+            if(msg == "留言成功"){
+                alert("留言成功");
+                $('#msg').val('');
+            }
+            if(msg == "留言失败"){
+                alert("留言失败");
+                $('#msg').val('');
+            }
+        })
+    </script>
+    <script type="text/javascript">
+        function search(e) {
+            var e = e||window.event;
+            if (e.keyCode==13) {
+                var val = document.getElementById("searchcontent").value;
+                // alert(val);
+                document.getElementById("searchcontent").value = '';
+                window.event.returnValue = false;
+                window.location.href = "searchMovies?selectType=Keyword&orderBy=DESC&sortType=Time&value="+encodeURIComponent(val);
+            }
+        }
+    </script>
 </head>
 
 <body>
-
+<input style="display: none" value="${msg}" id="msg">
+<input style="display: none" value="${sessionScope.user}" id="user1">
 <div class="">
     <div id="demo-1" data-zs-src='["img/111.jpg", "img/666.jpg", "img/555.jpg","img/4.jpg"]' data-zs-overlay="dots">
         <div class="demo-inner-content">
@@ -53,26 +94,26 @@
                         <!-- navbar-header -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
-                                <li class="active"><a href="">Home</a></li>
+                                <li class="active"><a href="welcome">Home</a></li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Genre <b class="caret"></b></a>
                                     <ul class="dropdown-menu multi-column columns-3">
                                         <li>
                                             <div class="col-sm-4">
                                                 <ul class="multi-column-dropdown">
-                                                    <li><a href="PageServlet">All</a></li>
-                                                    <li><a href="AllServlet?kind=热门&currentpageno=1">Hot</a></li>
+                                                    <li><a href="searchMovies?selectType=All&orderBy=ASC&sortType=numOfPeople">All</a></li>
+                                                    <li><a href="searchMovies?selectType=All&orderBy=DESC&sortType=Time">Hot</a></li>
                                                 </ul>
                                             </div>
                                             <div class="col-sm-4">
                                                 <ul class="multi-column-dropdown">
-                                                    <li><a href="AllServlet?kind=最新&currentpageno=1">new</a></li>
-                                                    <li><a href="AllServlet?kind=热映&currentpageno=1">Now</a></li>
+                                                    <li><a href="searchMovies?selectType=All&orderBy=DESC&sortType=Time">new</a></li>
+                                                    <li><a href="searchMovies?selectType=All&orderBy=DESC&sortType=Time">Now</a></li>
                                                 </ul>
                                             </div>
                                             <div class="col-sm-4">
                                                 <ul class="multi-column-dropdown">
-                                                    <li><a href="AllServlet?kind=高分&currentpageno=1">top score</a></li>
+                                                    <li><a href="searchMovies?selectType=All&orderBy=DESC&sortType=Grade">top score</a></li>
                                                 </ul>
                                             </div>
                                             <div class="clearfix"></div>
@@ -87,32 +128,34 @@
                                         <li>
                                             <div class="col-sm-4">
                                                 <ul class="multi-column-dropdown">
-                                                    <li><a href="AllServlet?kind=华语&currentpageno=1">China</a></li>
-                                                    <li><a href="AllServlet?kind=欧美&currentpageno=1">America</a></li>
+                                                    <li><a href="searchMovies?selectType=Country&orderBy=DESC&sortType=Time&value=中国">China</a></li>
+                                                    <li><a href="searchMovies?selectType=Country&orderBy=DESC&sortType=Time&value=美国">America</a></li>
                                                 </ul>
                                             </div>
                                             <div class="col-sm-4">
                                                 <ul class="multi-column-dropdown">
-                                                    <li><a href="AllServlet?kind=日本&currentpageno=1">Japan</a></li>
+                                                    <li><a href="searchMovies?selectType=Country&orderBy=DESC&sortType=Time&value=日本">Japan</a></li>
                                                 </ul>
                                             </div>
                                             <div class="col-sm-4">
                                                 <ul class="multi-column-dropdown">
-                                                    <li><a href="AllServlet?kind=韩国&currentpageno=1">Korea</a></li>
+                                                    <li><a href="searchMovies?selectType=Country&orderBy=DESC&sortType=Time&value=韩国">Korea</a></li>
                                                 </ul>
                                             </div>
                                             <div class="clearfix"></div>
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="">A - z list</a></li>
                                 <li><a href="#contactForm">Contact</a></li>
-                                <c:if test="${user.id==null}">
-                                    <li id="showname" style="display: inline-block;"><a href="admin.jsp">Login and Register</a></li>
+                                <c:if test="${sessionScope.user==null&&sessionScope.user.userName==null}">
+                                    <li id="showname" ><a href="jump">Login and Register</a></li>
                                 </c:if>
-                                <c:if test="${user.id!=null}">
-                                    <li id="showname2" style="display: none;"><a href="userinfo.jsp">${sessionScope.email}</a></li>
-                                    <li id="showname3" style="display: none;"><a href="LogoutServlet">log out !</a></li>
+                                <%
+                                    System.out.println(session.getAttribute("user"));
+                                %>
+                                <c:if test="${sessionScope.user!=null&&sessionScope.user.userName!=null}">
+                                    <li id="showname2" ><a href="toUserInfo">${sessionScope.user.userName}</a></li>
+                                    <li id="showname3"><a href="logout">log out !</a></li>
                                 </c:if>
                             </ul>
 
@@ -126,8 +169,13 @@
                             </ul> <!-- cd-header-buttons -->
                         </div>
                         <div id="cd-search" class="cd-search">
-                            <form action="FindServlet" method="post">
-                                <input name="searchcontent" type="search" placeholder="Search...">
+<%--                            <form action="searchMovies" method="post">--%>
+                                <form action="" method="">
+<%--                                <input name="value" type="search" placeholder="Search...">--%>
+                                <input name="value" id="searchcontent" type="search" placeholder="Search..." onkeydown="search(arguments[0])">
+                                <input style="display: none" name="selectType" value="Keyword">
+                                <input style="display: none" name="orderBy" value="DESC">
+                                <input style="display: none" name="sortType" value="Time">
                             </form>
                         </div>
                     </div>
@@ -181,14 +229,14 @@
             $("#video3").simplePlayer();
         });
     </script>
-    <c:if test="${user.id==null}">
+    <c:if test="${sessionScope.user.userName==null}">
         <div class="hot1">
             <div class="populardiv">
                 <ul class="popularul">
                     <li ><div class="popularfont">
                         热门电影
                     </div></li>
-                    <li><a href="" title="more movies"> 全部热门电影 》 </a></li>
+                    <li><a href="searchMovies?selectType=All&orderBy=DESC&sortType=numOfPeople" title="more movies"> 全部热门电影 》 </a></li>
                 </ul>
                 <div class="box">
                     <c:forEach items="${listShowNumOfPeople}" var="movie">
@@ -196,7 +244,7 @@
                             <div class="div5">
                                 <ul>
                                     <li style="text-align:center;">
-                                        <a href="MovieInf.jsp?movie=${movie}  name=${movie.movieName}">
+                                        <a href="findMovieInfo?id=${movie.id}">
                                             <img src="${movie.img}" style="padding-left:70px;padding-top:5px;padding-right:50px" alt="${movie.movieName}">
                                         </a>
                                     </li>
@@ -205,7 +253,7 @@
                             <br>
                             <div class="div6">
                                 <ul>
-                                    <li style="text-align:center;"><a style="padding-left:50px;padding-top:0px;" href="" title=${movie.movieName}>${movie.movieName}</a></li>
+                                    <li style="text-align:center;"><a style="padding-left:50px;padding-top:0px;" href="findMovieInfo?id=${movie.id}" title=${movie.movieName}>${movie.movieName}</a></li>
                                 </ul>
                             </div>
                             <div class="div7">
@@ -221,14 +269,14 @@
             <img src="img/mainad.jpg" style="width: 60%;margin-left: 6%;margin-top: 3%;">
         </div>
     </c:if>
-    <c:if test="${user.id!=null}">
+    <c:if test="${sessionScope.user.userName!=null}">
     <div class="hot1">
         <div class="populardiv">
             <ul class="popularul">
                 <li ><div class="popularfont">
                     为你推荐
                 </div></li>
-                <li><a href="" title="more movies"> 全部推荐电影 》 </a></li>
+                <li><a href="recommend?currentPage=1&userid=${sessionScope.user.id}" title="more movies"> 全部推荐电影 》 </a></li>
             </ul>
             <div class="box">
                 <c:forEach items="${listShowPrefer}" var="movie">
@@ -236,7 +284,7 @@
                     <div class="div5">
                         <ul>
                             <li style="text-align:center;">
-                                <a href="MovieInf.jsp?movie=${movie}  name=${movie.movieName}">
+                                <a href="findMovieInfo?id=${movie.id}">
                                             <img src="${movie.img}" style="padding-left:70px;padding-top:5px;padding-right:50px;" alt="${movie.movieName}">
                                 </a>
                             </li>
@@ -267,14 +315,13 @@
                 <li ><div class="popularfont">
                     高分电影
                 </div></li>
-                <li style="width: 3%;"><a href="" title="more movies"> 最新 </a></li>
-                <li style="width: 3%;"><a href="" title="hot" > 热门 </a></li>
-                <li style="width: 3%;"><a href="" title="grade" > 高分 </a></li>
-                <li style="width: 3%;"><a href="" title="chinese" > 华语 </a></li>
-                <li style="width: 3%;"><a href="" title="America" > 欧美 </a></li>
-                <li style="width: 3%;"><a href="" title="Japan" > 日本 </a></li>
-                <li style="width: 3%;"><a href="" title="Korea" > 韩国 </a></li>
-                <li style="width: 4%;"><a href="" title="more movies" > 更多》  </a></li>
+                <li style="width: 3%;"><a href="searchMovies?selectType=All&orderBy=DESC&sortType=Time" title="more movies"> 最新 </a></li>
+                <li style="width: 3%;"><a href="searchMovies?selectType=All&orderBy=DESC&sortType=numOfPeople" title="hot" > 热门 </a></li>
+                <li style="width: 3%;"><a href="searchMovies?selectType=All&orderBy=DESC&sortType=Grade" title="grade" > 高分 </a></li>
+                <li style="width: 3%;"><a href="searchMovies?selectType=Country&orderBy=DESC&sortType=Time&value=中国" title="chinese" > 中国 </a></li>
+                <li style="width: 3%;"><a href="searchMovies?selectType=Country&orderBy=DESC&sortType=Time&value=美国" title="America" > 美国 </a></li>
+                <li style="width: 3%;"><a href="searchMovies?selectType=Country&orderBy=DESC&sortType=Time&value=日本" title="Japan" > 日本 </a></li>
+                <li style="width: 3%;"><a href="searchMovies?selectType=Country&orderBy=DESC&sortType=Time&value=韩国" title="Korea" > 韩国 </a></li>
             </ul>
             <div class="box">
                 <c:forEach items="${listShowScore}" var="movie">
@@ -282,7 +329,7 @@
                         <div class="div5">
                             <ul>
                                 <li style="text-align:center;">
-                                    <a href="MovieInf.jsp?movie=${movie}  name=${movie.movieName}">
+                                    <a href="findMovieInfo?id=${movie.id}">
                                             <img src="${movie.img}" style="padding-left:70px;padding-top:5px;padding-right:50px;" alt="${movie.movieName}">
                                     </a>
                                 </li>
@@ -312,11 +359,10 @@
             <img src="">
         </div>
         <div class="last">
-            <form onsubmit="return check1(${sessionScope.email})" action="AddContactServlet" class="contact-form" method="post" name="contactForm" id="contactForm">
+            <form onsubmit="return check1(${sessionScope.user.userName})" action="writeMessage" class="contact-form" method="post" name="contactForm" id="contactForm">
                 <h3 class="text-uppercase">Contact with me</h3>
-                <input id="movieNameg" name="movieNameg" style="display:none;" value=>
-                <input type="text" class="form-control" placeholder="Your Name" id="name" name="name">
-                <input type="email" class="form-control" placeholder="Your Email" id="emailc" name="emailc">
+                <input id="userId" name="userId" style="display:none;" value="${sessionScope.user.id}">
+                <input type="text" class="form-control" placeholder="Your Name" id="userName" name="userName">
                 <textarea class="form-control" placeholder="Your Message" id="content" name="content"></textarea>
                 <button type="submit">Send</button>
             </form>

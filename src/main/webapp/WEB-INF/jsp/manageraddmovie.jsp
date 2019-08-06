@@ -19,7 +19,7 @@
 
 </head>
 <body>
-<form action="managerAddMovie" method="post" class="bootstrap-frm">
+<form action="managerAddMovie" method="post" class="bootstrap-frm" enctype="multipart/form-data">
     电影片名：<input type="text" name="movieName"><br>
     上映日期： <input type="text" name="releaseDate"><br>
     制片国家：<input type="text" name="country"><br>
@@ -28,9 +28,14 @@
     导演：<input type="text" name="director"><br>
     演员：<input type="text" name="actor"><br>
     电影简介：<input type="text" name="description"><br>
-    海报： <a href="javascript:;" class="a-upload">
-    <input type="file" style="margin-left: 4%;margin-top: 3%;" name="img" id="">上传文件
-</a><br>
+    海报： <div class="a-upload">
+    <div align="center">
+        <span class="fileinput-button" >
+            <span>上传海报</span>
+            <input type="file" name="image" style="position: absolute;right: 0px;top: 0px;opacity: 0;-ms-filter: 'alpha(opacity=0)';font-size: 200px;">
+        </span>
+    </div>
+</div><br>
     <br><br><br>
     <input type="submit" value="提交" class="sub">
 </form>

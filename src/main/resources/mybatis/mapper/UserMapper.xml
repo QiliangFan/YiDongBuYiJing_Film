@@ -40,7 +40,7 @@
 
     <insert id="add" parameterType="User">
         insert into Users
-        values (null,#{userName},#{password},#{email},#{birthday},#{gender},#{authority},#{image})
+        values (null,#{userName},#{password},#{email},#{birthday},#{gender},'0',#{image})
     </insert>
 
     <select id="selectByName" parameterType="java.lang.String" resultType="User">

@@ -8,10 +8,11 @@ body{
 }
 
 .userInfo{
-    background-color: #fff9e9;
+    background-color: white;
 }
 
 .leftBar{
+
     height: 100%;
     background-color: #e6bbbf;
     border-top-right-radius: 26px;
@@ -59,6 +60,11 @@ span.choose{
     height: 100%;
 }
 
+
+/*form#modifyUserInfo{*/
+/*    margin-top: 10vh;*/
+/*}*/
+
 .headImgContainer{
     width: 100%;
     text-align: center;
@@ -67,15 +73,19 @@ span.choose{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
 }
+
+.row{
+    overflow: hidden;
+}
+
 
 .headImgContainer img{
     width: 50%;
     height: 40%;
     display: block;
     magtin:auto;
-    background-color: #d7b7e2;
+    background-color: #F0F8FF;
     border-radius: 26px;
     box-shadow: #6c757d 0 0 10px;
 }
@@ -141,7 +151,8 @@ button.mybutton{
     text-shadow: #7abaff 0 0 3px;
     width: 5vw;
     height: 5vh;
-    margin: 1vw;
+    margin-top: 1vw;
+    transition:all 1s;
 }
 
 button.mybutton:hover{
@@ -153,4 +164,28 @@ button.mybutton:active{
 }
 .active{
     background-color: #c98078 !important;
+}
+
+div#myHoby input{
+    border-radius: 26px;
+    box-shadow: #6c757d 0 0 5px;
+    transition:all 1s;
+}
+
+div#personalInfo input{
+    border-radius: 15px;
+    box-shadow: #6c757d 0 0 3px;
+    width: 10vw ;
+    margin-left: 1vw;
+}
+
+input{
+    transition:all 1s;
+}
+
+.upload{
+    width: 2vw;
+    background-color: #fafafa;
+    box-shadow: #ffffff 0 0 0;
+    border-radius: 26px;
 }

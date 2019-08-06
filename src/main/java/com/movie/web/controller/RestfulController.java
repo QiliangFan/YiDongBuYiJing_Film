@@ -18,6 +18,7 @@ import org.json.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.util.List;
@@ -41,26 +42,31 @@ public class RestfulController {
     @Autowired
     UserPreferMapper userPreferMapper;
 
+
+
     @RequestMapping("/getUserData")
-    public String getUserData(@SessionAttribute(required = false) String userName ){
-        request.getSession().setAttribute("userName", "12");
-        userName="12";
+    public void getUserData(@SessionAttribute(required = false) String userName ,HttpServletResponse response){
+        response.setCharacterEncoding("UTF-8");
+//        request.getSession().setAttribute("userName", "12");
+//        userName="12";
         try {
-            if (userName == null) return null;
+            if (userName == null) return;
             else{
                 User user=userMapper.selectByName(userName);
                 JSONObject jsonObject = new JSONObject(user);
-                return jsonObject.toString();
+                PrintWriter out = response.getWriter();
+                out.print(jsonObject.toString());
+//                return jsonObject.toString();
             }
         }catch (Exception e) {
-            return null;
+//            return null;
         }
     }
 
     @RequestMapping("/getMyReply")
     public String getMyReply(@SessionAttribute(required = false) String userName ){
-        request.getSession().setAttribute("userName", "12");
-        userName="12";
+//        request.getSession().setAttribute("userName", "12");
+//        userName="12";
         try {
                BufferedReader bf = new BufferedReader(new InputStreamReader(request.getInputStream()));
                String temp=null;
@@ -91,27 +97,35 @@ public class RestfulController {
     }
 
     @RequestMapping("/getPrefer")
-    public String getPrefer(@SessionAttribute(required = false) String userName){
-        request.getSession().setAttribute("userName", "12");
-        userName = "12";
+    public void getPrefer(@SessionAttribute(required = false) String userName,HttpServletResponse response){
+        response.setCharacterEncoding("utf-8");
+//        request.getSession().setAttribute("userName", "12");
+//        userName = "12";
         try {
             User user = userMapper.selectByName(userName);
             UserPrefer userPrefer=userPreferMapper.selectByUserId(user.getId());
             JSONObject jo = new JSONObject(userPrefer);
-            return jo.toString();
+            String result = jo.toString();
+            result = new String(result.getBytes("utf-8"),"utf-8");
+            PrintWriter out= response.getWriter();
+            out.print(result);
+//            return result;
         }catch (Exception e){
             e.printStackTrace();
         }
-        return null;
+//        return null;
     }
 
 
     @RequestMapping("/updatePrefer")
-    public String updatePrefer(@SessionAttribute(required = false)String userName){
+    public void updatePrefer(@SessionAttribute(required = false)String userName,HttpServletResponse response){
+        response.setCharacterEncoding("utf-8");
+//        userName="12";
         User user=userMapper.selectByName(userName);
         try {
+            request.setCharacterEncoding("utf-8");
             User user1=userMapper.selectByName(userName);
-            BufferedReader bf=new BufferedReader(new InputStreamReader(request.getInputStream()));
+            BufferedReader bf=new BufferedReader(new InputStreamReader(request.getInputStream(),"utf-8"));
             String temp=null;
             StringBuilder sb=new StringBuilder();
             while((temp=bf.readLine())!=null){
@@ -126,10 +140,12 @@ public class RestfulController {
             userPreferMapper.update(new UserPrefer(
                 id,movieType,director,actor,user1.getId()
             ));
-            return jo.toString();
+            PrintWriter out = response.getWriter();
+            out.print(jo.toString());
+//            return jo.toString();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+//        return null;
     }
 }

@@ -22,37 +22,49 @@
 
 <div class="view">
     <div class="title">
-        <a href="managerToShowAllMovies"><img src="../../img/return.png"
+        <a href="managerToShowAllMovies"><img src="img/back.png"
                                               style="height: 40px;width: 40px;"></a>
-        <h1>
+        <h2  style="color: darkslategrey;margin-left: 100px;">
             ${movie.movieName}
-        </h1>
+        </h2>
     </div>
     <div class="content">
         <div class="picture">
-            <img src="${ movie.img}" style="width: 300px;
+            <img src="${ movie.img}" style="width: 250px;
+    height: 330px;
     float: left;
     margin-right: 100px;
-    margin-left: 20px;">
+    margin-left: 100px;
+    border-radius: 1em;">
         </div>
-        <div class="information">
-            <span>导演:</span> ${movie.director}
+        <div class="information" style="color:grey">
+            <span style=" margin-right: 20px; margin-left: 30px;">导演:</span> ${movie.director}
             <br>
             <br>
-            <span>编剧:</span>${movie.screenWriter}
+            <span style=" margin-right: 20px; margin-left: 30px;">编剧:</span>${movie.screenWriter}
             <br><br>
-            <span>主演:</span> ${movie.actor}
-            <br><br>
-            <span>类型:</span> ${movie.movieKind}
-      <br>
-            <span>发行地区:</span> ${movie.country}
-<br>
-            <span>上映日期:</span> ${ movie.releaseDate}
+
+            <span style=" margin-right: 20px; margin-left: 30px;float: left;">主演:</span>
+            <div class="actor" style="overflow:hidden;word-break:keep-all;white-space:nowrap;
+        text-overflow:ellipsis;vertical-align:inherit;">
+            ${movie.actor}</div>
+
+            <br>
+            <span style=" margin-right: 20px; margin-left: 30px;">类型:</span> ${movie.movieKind}
+      <br><br>
+            <span style=" margin-right: 20px; margin-left: 30px;">发行地区:</span> ${movie.country}
+<br><br>
+            <span style=" margin-right: 20px; margin-left: 30px;">上映日期:</span> ${ movie.releaseDate}
             <br><br>
         </div>
-        <div class="describe">
-            <span style="font-weight: bold;">电影介绍:</span>
-            <br>
+        <div class="describe" style="margin-left: 33px;
+    float: left;
+    width: 500px;
+    color: grey;
+    margin-bottom: 50px;
+    font-size: 15px;">
+            <span style="font-weight: bold;font-size: 16px;">电影介绍:</span>
+            <br><br>
             ${movie.description}
         </div>
     </div>

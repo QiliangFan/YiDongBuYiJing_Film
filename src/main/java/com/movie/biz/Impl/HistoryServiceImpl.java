@@ -5,10 +5,12 @@ import com.movie.dao.HistoryMapper;
 import com.movie.domain.po.History;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
-@Component
+@Service("historyService")
 public class HistoryServiceImpl implements HistoryService {
     @Autowired
     HistoryMapper historyMapper;
@@ -33,6 +35,18 @@ public class HistoryServiceImpl implements HistoryService {
 
     @Override
     public List<History> selectByUserId2(Integer userId) {
-        return null;
+        List<History> histories=historyMapper.selectByUserId2(userId);
+        return histories;
+    }
+
+    @Override
+    public boolean add(History history) {
+        System.out.println(history);
+        history.setTime(""+new Timestamp(System.currentTimeMillis()));
+        int a = historyMapper.add(history);
+        if(a==1)
+            return true;
+        else
+            return  false;
     }
 }

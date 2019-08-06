@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
     <title>Title</title>
@@ -25,42 +27,19 @@
     <script type="text/javascript" src="javascript/modernizr-2.6.2.min.js"></script>
     <script src="javascript/jquery-1.11.1.min.js"></script>
     <script type="text/javascript">
-        function showtitle(){
-            var x=document.getElementById("showname");
-            var y=document.getElementById("showname2");
-            var z=document.getElementById("showname3");
-            //alert(x.style.display);
-            <%--var email=${sessionScope.email};--%>
-            <%--var emailn="${sessionScope.email}";--%>
-            var emailn= "<%=session.getAttribute("email")%>";
-            // console.log(email);
-            //alert(x.style.display);
-            if(emailn=="null"||emailn==""){
-                if(x.style.display=="none")
-                {
-                    x.style.display="inline-block";
-                }
-                if(y.style.display=="inline-block"){
-                    y.style.display=="none";
-                }
-                if(z.style.display=="inline-block"){
-                    z.style.display=="none";
-                }
-            }else {
-                if(x.style.display=="inline-block"){
-                    x.style.display="none";
-                }
-                if(y.style.display=="none"){
-                    y.style.display="inline-block";
-                }
-                if(z.style.display=="none"){
-                    z.style.display="inline-block";
-                }
+        function search(e) {
+            var e = e||window.event;
+            if (e.keyCode==13) {
+                var val = document.getElementById("searchcontent").value;
+                // alert(val);
+                document.getElementById("searchcontent").value = '';
+                window.event.returnValue = false;
+                window.location.href = "searchMovies?selectType=Keyword&orderBy=DESC&sortType=Time&value="+encodeURIComponent(val);
             }
         }
     </script>
 </head>
-<body onload="showtitle()">
+<body>
 <div id="demo-1" class="banner-inner">
     <div class="">
         <!--/header-w3l-->
@@ -79,26 +58,26 @@
                     <!-- navbar-header -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li><a href="main.jsp">Home</a></li>
+                            <li><a href="welcome">Home</a></li>
                             <li class="dropdown active">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Genre <b class="caret"></b></a>
                                 <ul class="dropdown-menu multi-column columns-3">
                                     <li>
                                         <div class="col-sm-4">
                                             <ul class="multi-column-dropdown">
-                                                <li><a href="PageServlet">All</a></li>
-                                                <li><a href="AllServlet?kind=热门&currentpageno=1">Hot</a></li>
+                                                <li><a href="searchMovies?selectType=All&orderBy=ASC&sortType=numOfPeople">All</a></li>
+                                                <li><a href="searchMovies?selectType=All&orderBy=DESC&sortType=Time">Hot</a></li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-4">
                                             <ul class="multi-column-dropdown">
-                                                <li><a href="AllServlet?kind=最新&currentpageno=1">new</a></li>
-                                                <li><a href="AllServlet?kind=热映&currentpageno=1">Now</a></li>
+                                                <li><a href="searchMovies?selectType=All&orderBy=DESC&sortType=Time">new</a></li>
+                                                <li><a href="searchMovies?selectType=All&orderBy=DESC&sortType=Time">Now</a></li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-4">
                                             <ul class="multi-column-dropdown">
-                                                <li><a href="AllServlet?kind=高分&currentpageno=1">top score</a></li>
+                                                <li><a href="searchMovies?selectType=All&orderBy=DESC&sortType=Grade">top score</a></li>
                                             </ul>
                                         </div>
                                         <div class="clearfix"></div>
@@ -111,29 +90,34 @@
                                     <li>
                                         <div class="col-sm-4">
                                             <ul class="multi-column-dropdown">
-                                                <li><a href="AllServlet?kind=华语&currentpageno=1">China</a></li>
-                                                <li><a href="AllServlet?kind=欧美&currentpageno=1">America</a></li>
+                                                <li><a href="searchMovies?selectType=Country&orderBy=DESC&sortType=Time&value=中国">China</a></li>
+                                                <li><a href="searchMovies?selectType=Country&orderBy=DESC&sortType=Time&value=美国">America</a></li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-4">
                                             <ul class="multi-column-dropdown">
-                                                <li><a href="AllServlet?kind=日本&currentpageno=1">Japan</a></li>
+                                                <li><a href="searchMovies?selectType=Country&orderBy=DESC&sortType=Time&value=日本">Japan</a></li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-4">
                                             <ul class="multi-column-dropdown">
-                                                <li><a href="AllServlet?kind=韩国&currentpageno=1">Korea</a></li>
+                                                <li><a href="searchMovies?selectType=Country&orderBy=DESC&sortType=Time&value=韩国">Korea</a></li>
                                             </ul>
                                         </div>
                                         <div class="clearfix"></div>
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="">A - z list</a></li>
-                            <li><a href="main.jsp#contactForm" target="_top">Contact</a></li>
-                            <li id="showname" style="display: inline-block;"><a href="admin.jsp">Login and Register</a></li>
-                            <li id="showname2" style="display: none;"><a href="userinfo.jsp">Hello! ${sessionScope.email}</a></li>
-                            <li id="showname3" style="display: none;"><a href="LogoutServlet">log out !</a></li>
+                            <c:if test="${sessionScope.user==null&&sessionScope.user.userName==null}">
+                            <li id="showname" ><a href="jump">Login and Register</a></li>
+                        </c:if>
+                            <%
+                                System.out.println(session.getAttribute("user"));
+                            %>
+                            <c:if test="${sessionScope.user!=null&&sessionScope.user.userName!=null}">
+                                <li id="showname2" ><a href="toUserInfo">${sessionScope.user.userName}</a></li>
+                                <li id="showname3"><a href="logout">log out !</a></li>
+                            </c:if>
                         </ul>
 
                     </div>
@@ -146,8 +130,12 @@
                         </ul> <!-- cd-header-buttons -->
                     </div>
                     <div id="cd-search" class="cd-search">
-                        <form action="FindServlet" method="post">
-                            <input name="searchcontent" type="search" placeholder="Search...">
+                        <form action="" method="">
+                            <%--                                <input name="value" type="search" placeholder="Search...">--%>
+                                <input name="value" id="searchcontent" type="search" placeholder="Search..." onkeydown="search(arguments[0])">
+                            <input style="display: none" name="selectType" value="Keyword">
+                            <input style="display: none" name="orderBy" value="DESC">
+                            <input style="display: none" name="sortType" value="Time">
                         </form>
                     </div>
                 </div>

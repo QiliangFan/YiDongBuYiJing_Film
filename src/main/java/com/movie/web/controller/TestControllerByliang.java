@@ -10,9 +10,8 @@ public class TestControllerByliang {
     @Autowired
     UserServiceImpl userService;
 
-    @RequestMapping("/test")
+    @RequestMapping("/manager")
     public String test(){
-        userService.forgetPwd("");
         return "managerfind";
     }
 }

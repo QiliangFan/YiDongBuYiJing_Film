@@ -19,4 +19,5 @@ public interface FilmReviewMapper {
     int count();
     int countByUserId(Integer userId);
     int countByMovieId(Integer movieId);
+    FilmReview selectFilmReviewById(Integer id);
 }

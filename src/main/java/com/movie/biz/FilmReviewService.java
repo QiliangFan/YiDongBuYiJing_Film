@@ -14,5 +14,4 @@ public interface FilmReviewService {
     Integer totalPage(Integer limit);
     Integer totalPageByUser(Integer limit,Integer userId);
     Integer totalPageByMovie(Integer limit,Integer movieId);
-
 }

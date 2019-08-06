@@ -19,7 +19,7 @@
 
 </head>
 <body>
-<form action="managerUpdateMovie" method="post" class="bootstrap-frm">
+<form action="managerUpdateMovie" method="post" class="bootstrap-frm" enctype="multipart/form-data">
     <input type="hidden" name="id" value="${movie.id}" hidden>
     电影片名：<input type="text" name="movieName"value="${movie.movieName}"><br>
     上映日期:<input type="text" name="releaseDate" value="${movie.releaseDate}"><br>
@@ -29,14 +29,19 @@
     导演：<input type="text" name="director" value="${movie.director}"><br>
     演员：<input type="text" name="actor" value="${movie.actor}"><br>
     电影简介<input type="text" name="description" value="${movie.description}"><br>
-    <span style="width:100%;text-align:center;"><img style="display:inline-block;height: 30%;width: 20%;" src="${movie.img}"></span>
+    <img src="${movie.img}" style="height: 40px;width: 40px;">
     <br>
-    <span>
-        海报： <a href="javascript:;" class="a-upload" style="margin-right: 12%;">
-    <input type="file" style="margin-left: 4%;margin-top: 3%;" name="img" id="" value="${movie.img}">上传文件
-</a>
-    </span>
-    <br>
+<%--    海报<input type="file" name="image" value="${movie.img}"><br>--%>
+    海报： <div class="a-upload">
+    <div align="center">
+        <span class="fileinput-button" >
+            <span>上传海报</span>
+            <input type="file" name="image" value="${movie.img}" style="position: absolute;right: 0px;top: 0px;opacity: 0;-ms-filter: 'alpha(opacity=0)';font-size: 200px;">
+        </span>
+    </div>
+</div><br>
+
+
     <input type="submit" value="提交" class="sub">
 </form>
 

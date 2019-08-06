@@ -92,13 +92,13 @@
     border-color: #ADADAD;
 }
 .sub{
-     background: #FFF;
-     border: 1px solid #CCC;
-     padding: 10px 25px 10px 25px;
-     color: #333;
-     border-radius: 4px;
-     /*margin-right: 120px*/
- }
+    background: #FFF;
+    border: 1px solid #CCC;
+    padding: 10px 25px 10px 25px;
+    color: #333;
+    border-radius: 4px;
+    /*margin-right: 120px*/
+}
 .sub:hover{
     color: #333;
     background-color: #EBEBEB;
@@ -142,4 +142,19 @@
     background: #eee;
     border-color: #ccc;
     text-decoration: none
+}
+
+.fileinput-button {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.fileinput-button input{
+    position:absolute;
+    right: 0px;
+    top: 0px;
+    opacity: 0;
+    -ms-filter: 'alpha(opacity=0)';
+    font-size: 200px;
 }

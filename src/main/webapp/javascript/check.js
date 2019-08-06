@@ -99,4 +99,5 @@ function checkreg(eamil,uname,pwd,pwdconfirm,birthday,pin){
             }
         }
     }
+    alert("??")
 }

@@ -108,8 +108,31 @@
     <link rel="stylesheet" type="text/css" href="css/zoomslider2.css" />
 
     <script type="text/javascript" src="js/movieinfo.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var msg = $('#msg').val();
+            if(msg == "评分成功"){
+                alert("评分成功");
+                $('#msg').val('');
+            }
+            if(msg == "评分失败"){
+                alert("评分失败");
+                $('#msg').val('');
+            }
+            if(msg == "发表影评成功"){
+                alert("发表影评成功");
+                $('#msg').val('');
+            }
+            if(msg == "发表影评失败"){
+                alert("发表影评失败");
+                $('#msg').val('');
+            }
+        })
+
+    </script>
 </head>
 <body>
+<input style="display: none" value="${msg}" id="msg">
 <%--<%--%>
 <%--    List<String[]> afilmlist=(List<String[]>)request.getAttribute("afilm");--%>
 <%--%>--%>
@@ -145,7 +168,7 @@
         <div>
             <input id="forgetemail" style="display:none;" value="${sessionScope.user.id }">
 
-            <form onsubmit="return checkfilmreview()" action="writeFilmReview" method="post">
+            <form onsubmit="return check1('${sessionScope.user.userName}')" action="writeFilmReview" method="post">
                 <div style="display:flex;flex-direction:column;align-items:center;justify-content:flex-start;">
                     <input id="userId" name="userId" style="display:none;" value="${sessionScope.user.id}">
                     <input id="movieId" name="movieId" style="display:none;" value="${moviesByMovie.id}">

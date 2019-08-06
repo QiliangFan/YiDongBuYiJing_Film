@@ -12,8 +12,8 @@ function check(email){
     return false;
 }
 
-function check1(email){
-    if(typeof(email)!=undefined&&email!=null&&email!=""){
+function check1(id){
+    if(typeof(id)!=undefined&&id!=null&&id!=""){
         return true;
     }else{
         alert("请先登录");

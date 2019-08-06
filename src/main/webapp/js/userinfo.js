@@ -32,13 +32,13 @@ var offset = 0;
 var limit = 10;
 var reply = []
 var pageMax = 0;
-//
-//
+
 function errorImg(imgSrc) {
     imgSrc.src = "/Movies/img/liangUser.png";
 }
 
 window.onload = function () {
+    console.log("userinfo.js");
     getData();
     handleLeftBar();
     personalInfo();
@@ -106,6 +106,9 @@ window.onload = function () {
             $("button[value='7']").addClass("active");
         }
     });
+
+    $("tr:odd").css("background-color","#F8F8FF");
+    $("tr:even").css("background-color","#FFF0F5");
 };
 
 function getPrefer() {
@@ -129,10 +132,14 @@ function getPrefer() {
                 var reg = new RegExp(allMovieType[i]);
                 if (reg.test(movieType)) {
                     choose[i] = 1;
+                    $("button.mybutton[value='"+(i+1)+"']").addClass("active");
                 } else {
                     choose[i] = 0;
+                    $("button.mybutton[value='"+(i+1)+"']").removeClass("active");
                 }
             }
+            $("input#director").val(director);
+            $("input#actor").val(actor);
         }
     })
 }
@@ -160,16 +167,16 @@ function handleLeftBar() {
     })
 }
 
-//
-//
-// function getformData($form) {
-//     var unindexed_array = $form.serializeArray();
-//     var indexed_array = {};
-//     $.map(unindexed_array, function (n, i) {
-//         indexed_array[n["name"]] = n["value"];
-//     });
-//     return indexed_array;
-// }
+
+
+function getformData($form) {
+    var unindexed_array = $form.serializeArray();
+    var indexed_array = {};
+    $.map(unindexed_array, function (n, i) {
+        indexed_array[n["name"]] = n["value"];
+    });
+    return indexed_array;
+}
 
 function getData() {
     $.ajax({
@@ -228,23 +235,30 @@ function myHoby() {
         var to_director = $("input[name='director']").val();
         var to_actor = $("input[name='actor']").val();
         var str ="";
+        console.log(to_director)
+        console.log(director)
+        console.log(actor)
+        console.log(to_actor)
+        console.log(str)
         for(var i=0;i<choose.length;i++){
             if(choose[i]==1){
                 str+=allMovieType[i];
                 str+=" ";
             }
         }
+
         $.ajax({
-            url:"modifyUserInfo",
+            url:"updatePrefer",
             type:"POST",
             dataType:"json",
-            data:JSON.stringify({"id":user_prefer,"director":director,"actor":actor,"movieType":str}),
+            data:JSON.stringify({"id": user_prefer,"director":director,"actor":actor,"movieType":str}),
+            contentType:"application/json;charset=UTF-8",
             error:function (data) {
-                console.log("failed=>modifyUserInfo");
+                console.log("failed=>updatePrefer");
                 console.log(data);
             },
             success:function (data) {
-                console.log("success=>modifyUserInfo");
+                console.log("success=>updatePrefer");
                 console.log(data);
 
             }
@@ -284,54 +298,21 @@ function myComments() {
     $("#myComments").show();
 }
 
-// function getReply(offset, limit) {
-//     $.ajax({
-//         url: "getMyReply",
-//         type: "POST",
-//         dataType: "json",
-//         data: JSON.stringify({"offset": offset, "limit": limit}),
-//         error: function (data) {
-//             console.log("failed=>getReply");
-//             console.log(data);
-//
-//         },
-//         success: function (data) {
-//             console.log("success=>getReply");
-//             console.log(data);
-//             reply = data;
-//             pageMax = Math.ceil(reply.length / 5.0);
-//         }
-//     })
-// }
-//
-// // function pageUp() {
-// //     if (cur_page == pageMax) {
-// //         cur_page = 1;
-// //         getReply(0, 5);
-// //     } else {
-// //         cur_page += 1;
-// //         getReply((cur_page - 1) * 5, 5);
-// //     }
-// // }
-// //
-// // function pageDown() {
-// //     if (cur_page == 1) {
-// //         cur_page = pageMax;
-// //         getReply((cur_page - 1) * 5, 5);
-// //     } else {
-// //         cur_page -= 1;
-// //         getReply((cur_page - 1) * 5, 5);
-// //     }
-// // }
-// //
-// // function page(nth) {
-// //     if (pageMax <= 0) {
-// //         return false;
-// //     }
-// //     if (nth < 0 || nth > pageMax) {
-// //         nth = 1;
-// //         getReply(0, 5);
-// //         cur_page = 1;
-// //     }
-// //
-// // }
+function submitForm(){
+    var pwd1 = $("#fpassword").val();
+    var pwd2 = $("#fconfirmpassword").val();
+    if(pwd1&&pwd2&&pwd1!=""&&pwd2!=""){
+        if(pwd1!=pwd2){
+            alert("两次密码不一致!");
+            return false;
+        }else{
+            $("#password").val(md5(pwd1));
+            $("#confirmpassword").val(md5(pwd2));
+            alert("修改成功")
+            return true;
+        }
+    }else{
+        alert("密码不能为空");
+        return false;
+    }
+}

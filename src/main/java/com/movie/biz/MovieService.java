@@ -2,13 +2,10 @@ package com.movie.biz;
 
 import com.movie.domain.po.Movie;
 import com.movie.utils.Page;
-<<<<<<< HEAD
+import com.movie.utils.Select;
 import com.movie.utils.SelectType;
 
 import java.util.List;
-=======
-import com.movie.utils.Select;
->>>>>>> 3d4a2df8581f325c2f61070cf3657ec6ac227a4a
 
 /**
  * @author hehe
@@ -16,26 +13,10 @@ import com.movie.utils.Select;
  * @date 2019/8/3
  */
 public interface MovieService {
-    /**
-     * 查询
-     * @param selectType
-     * @param sortType
-     * @param value
-     * @param currentPage
-     * @param pageSize
-     * @return
-     */
-<<<<<<< HEAD
-    Page<Movie> select(SelectType type, Object value, Integer currentPage, Integer pageSize);
-=======
-    Page<Movie> select(Select.SelectType selectType, Object value, Select.SortType sortType, Select.OrderBy orderBy, Integer currentPage, Integer pageSize);
->>>>>>> 3d4a2df8581f325c2f61070cf3657ec6ac227a4a
 
-    /**
-     * 增加电影
-     * @param movie
-     * @return
-     */
+
+    Page<Movie> select(Select.SelectType selectType, Object value, Select.SortType sortType, Select.OrderBy orderBy, Integer currentPage, Integer pageSize);
+
     Boolean add(Movie movie);
 
     /**

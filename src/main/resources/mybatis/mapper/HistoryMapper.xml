@@ -7,8 +7,8 @@
 <!--        @date 2019/8/2-->
 <mapper namespace="com.movie.dao.HistoryMapper">
     <insert id="add" parameterType="History">
-        INSERT INTO Historys
-        VALUES (default ,#{event},#{time},#{userId},#{movieId})
+        INSERT INTO Historys (event,time,userId,movieId)
+        VALUES (#{event},#{time},#{userId},#{movieId})
     </insert>
     <select id="selectAll" resultType="History">
         SELECT * from Historys LIMIT #{offset},#{limit};
@@ -44,7 +44,6 @@
     <select id="count" resultType="int">
         select count(*) from Historys;
     </select>
-    
     <resultMap id="myHistory" type="History">
         <id column="id" property="id"></id>
         <result column="event" property="event"></result>
@@ -55,6 +54,7 @@
             <result column="movieName" property="movieName"></result>
         </association>
     </resultMap>
+
     <select id="selectByUserId2" resultMap="myHistory">
         select * from
         Historys left join Movies on movieId = Movies.id

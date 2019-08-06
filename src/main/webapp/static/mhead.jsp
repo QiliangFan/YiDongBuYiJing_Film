@@ -37,8 +37,7 @@
 <div class="pdiv1">
 
 	<div class="navbar-header">
-
-		<h1><a  href="#" ><span>F</span>unny <span>M</span>ovies</a></h1>
+		<h1><a href="welcome" target="_top"><span>F</span>unny <span>M</span>ovies</a></h1>
 	</div>
 </div>
 </body>
